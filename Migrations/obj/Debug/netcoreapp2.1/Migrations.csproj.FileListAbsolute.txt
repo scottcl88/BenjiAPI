@@ -1,0 +1,32 @@
+C:\Users\scott\Desktop\Angular Website\CarApplication\Migrations\obj\Debug\netcoreapp2.1\Migrations.csprojAssemblyReference.cache
+C:\Users\scott\Desktop\Angular Website\CarApplication\Migrations\obj\Debug\netcoreapp2.1\Migrations.csproj.CoreCompileInputs.cache
+C:\Users\scott\Desktop\Angular Website\CarApplication\Migrations\obj\Debug\netcoreapp2.1\Migrations.AssemblyInfoInputs.cache
+C:\Users\scott\Desktop\Angular Website\CarApplication\Migrations\obj\Debug\netcoreapp2.1\Migrations.AssemblyInfo.cs
+C:\Users\scott\Desktop\Angular Website\CarApplication\Migrations\bin\Debug\netcoreapp2.1\Migrations.deps.json
+C:\Users\scott\Desktop\Angular Website\CarApplication\Migrations\bin\Debug\netcoreapp2.1\Migrations.dll
+C:\Users\scott\Desktop\Angular Website\CarApplication\Migrations\bin\Debug\netcoreapp2.1\Migrations.pdb
+C:\Users\scott\Desktop\Angular Website\CarApplication\Migrations\obj\Debug\netcoreapp2.1\Migrations.dll
+C:\Users\scott\Desktop\Angular Website\CarApplication\Migrations\obj\Debug\netcoreapp2.1\Migrations.pdb
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\bin\Debug\netcoreapp2.1\Migrations.deps.json
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\bin\Debug\netcoreapp2.1\Migrations.dll
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\bin\Debug\netcoreapp2.1\Migrations.pdb
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\obj\Debug\netcoreapp2.1\Migrations.AssemblyInfoInputs.cache
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\obj\Debug\netcoreapp2.1\Migrations.AssemblyInfo.cs
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\obj\Debug\netcoreapp2.1\Migrations.csproj.CoreCompileInputs.cache
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\obj\Debug\netcoreapp2.1\Migrations.dll
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\obj\Debug\netcoreapp2.1\Migrations.pdb
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\bin\Debug\netcoreapp2.1\Migrations.runtimeconfig.json
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\bin\Debug\netcoreapp2.1\Migrations.runtimeconfig.dev.json
+C:\Users\Scott\source\repos\BlazorApp1\Migrations\obj\Debug\netcoreapp2.1\Migrations.genruntimeconfig.cache
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\bin\Debug\netcoreapp2.1\Migrations.deps.json
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\bin\Debug\netcoreapp2.1\Migrations.runtimeconfig.json
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\bin\Debug\netcoreapp2.1\Migrations.runtimeconfig.dev.json
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\bin\Debug\netcoreapp2.1\Migrations.dll
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\bin\Debug\netcoreapp2.1\Migrations.pdb
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\obj\Debug\netcoreapp2.1\Migrations.csprojAssemblyReference.cache
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\obj\Debug\netcoreapp2.1\Migrations.AssemblyInfoInputs.cache
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\obj\Debug\netcoreapp2.1\Migrations.AssemblyInfo.cs
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\obj\Debug\netcoreapp2.1\Migrations.csproj.CoreCompileInputs.cache
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\obj\Debug\netcoreapp2.1\Migrations.dll
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\obj\Debug\netcoreapp2.1\Migrations.pdb
+C:\Users\Scott\source\repos\BenjiWorldApp\Migrations\obj\Debug\netcoreapp2.1\Migrations.genruntimeconfig.cache

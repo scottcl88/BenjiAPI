@@ -14,7 +14,7 @@ namespace BenjiAPI
 {
     [ApiController]
     [Route("[controller]")]
-    [EnableCors("*", "*", "*")]
+    [EnableCors("MyPolicy")]
     public class DogController : ControllerBase
     {
         private DogManager _dogManager;
@@ -34,7 +34,7 @@ namespace BenjiAPI
         }
         [HttpGet]
         [Route("Get/{Id}")]
-        [EnableCors("*", "*", "*")]
+        [EnableCors("MyPolicy")]
         public DogModel Get(int Id)
         {
             return _dogManager.GetDogById(new DogId() { Value = Id });

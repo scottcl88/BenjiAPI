@@ -1,8 +1,9 @@
 ﻿using Models;
+using System;
 
 namespace DataExtensions
 {
-    public class DogCreateRequest
+    public partial class DogCreateRequest
     {
         public DogCreateRequest()
         {
@@ -10,8 +11,7 @@ namespace DataExtensions
         }
         public DogModel Dog { get; set; }
     }
-
-    public class DogUpdateRequest
+    public partial class DogUpdateRequest
     {
         public DogUpdateRequest()
         {

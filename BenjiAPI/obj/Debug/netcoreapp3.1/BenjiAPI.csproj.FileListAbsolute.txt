@@ -36,3 +36,11 @@ C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\obj\Debug\netcoreapp3.1\BenjiAPI.R
 C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\obj\Debug\netcoreapp3.1\BenjiAPI.csproj.CopyComplete
 C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\obj\Debug\netcoreapp3.1\staticwebassets\BenjiAPI.StaticWebAssets.Manifest.cache
 C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\obj\Debug\netcoreapp3.1\staticwebassets\BenjiAPI.StaticWebAssets.xml
+C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\bin\Debug\netcoreapp3.1\BenjiAPI.deps.json
+C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\bin\Debug\netcoreapp3.1\BenjiAPI.runtimeconfig.json
+C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\bin\Debug\netcoreapp3.1\BenjiAPI.runtimeconfig.dev.json
+C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\bin\Debug\netcoreapp3.1\BenjiAPI.dll
+C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\bin\Debug\netcoreapp3.1\BenjiAPI.pdb
+C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\obj\Debug\netcoreapp3.1\BenjiAPI.dll
+C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\obj\Debug\netcoreapp3.1\BenjiAPI.pdb
+C:\Users\Scott\source\repos\BenjiAPI\BenjiAPI\obj\Debug\netcoreapp3.1\BenjiAPI.genruntimeconfig.cache

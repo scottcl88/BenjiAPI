@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
-    public class DogId
+    public partial class DogId
     {
         public long Value { get; set; }
     }
-    public class DogModel
+    public partial class DogModel
     {
         [Required]
         public DogId DogId { get; set; }
@@ -26,11 +26,11 @@ namespace Models
     }
 
 
-    public class HealthId
+    public partial class HealthId
     {
         public long Value { get; set; }
     }
-    public class HealthModel
+    public partial class HealthModel
     {
         public HealthId HealthId { get; set; }
         public DogModel Dog { get; set; }

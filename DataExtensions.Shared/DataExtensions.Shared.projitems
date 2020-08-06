@@ -9,6 +9,7 @@
     <Import_RootNamespace>DataExtensions.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DocumentRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DogRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HealthRequest.cs" />
   </ItemGroup>

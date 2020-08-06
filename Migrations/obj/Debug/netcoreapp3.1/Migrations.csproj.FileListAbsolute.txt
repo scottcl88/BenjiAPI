@@ -91,3 +91,4 @@ C:\Users\Scott\source\repos\BenjiAPI\Migrations\obj\Debug\netcoreapp3.1\Migratio
 C:\Users\Scott\source\repos\BenjiAPI\Migrations\obj\Debug\netcoreapp3.1\Migrations.dll
 C:\Users\Scott\source\repos\BenjiAPI\Migrations\obj\Debug\netcoreapp3.1\Migrations.pdb
 C:\Users\Scott\source\repos\BenjiAPI\Migrations\obj\Debug\netcoreapp3.1\Migrations.genruntimeconfig.cache
+C:\Users\Scott\source\repos\BenjiAPI\Migrations\obj\Debug\netcoreapp3.1\Migrations.csprojAssemblyReference.cache

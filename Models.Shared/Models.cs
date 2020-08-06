@@ -26,6 +26,26 @@ namespace Models
     }
 
 
+    public partial class DocumentId
+    {
+        public long Value { get; set; }
+    }
+    public partial class DocumentModel
+    {
+        [Required]
+        public DocumentId DocumentId { get; set; }
+        [Required]
+        public string FileName { get; set; }
+        public Guid Key { get; set; }
+        public string Description { get; set; }
+        [Required]
+        public DateTime? Created { get; set; }
+        [Required]
+        public DateTime? Modified { get; set; }
+        public DateTime? Deleted { get; set; }
+    }
+
+
     public partial class HealthId
     {
         public long Value { get; set; }

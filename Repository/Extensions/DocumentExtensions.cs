@@ -12,7 +12,11 @@ namespace Repository
                 DocumentId = new DocumentId() { Value = dbDocument.DocumentId },
                 FileName = dbDocument.FileName,
                 Description = dbDocument.Description,
+                Type = dbDocument.Type,
+                ByteSize = dbDocument.ByteSize,
+                Folder = dbDocument.Folder.ToFolderModel(),
                 Key = dbDocument.Key,
+                LastViewed = dbDocument.LastViewed,
                 Created = dbDocument.Created,
                 Modified = dbDocument.Modified,
                 Deleted = dbDocument.Deleted

@@ -39,7 +39,7 @@ namespace Repository
 
 
             configuration.DataBaseIntegration(x => {
-                x.ConnectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
+                x.ConnectionString = "Server=localhost\\SQLEXPRESS;Database=elements;Trusted_Connection=True;";
                 x.Driver<SqlClientDriver>();
                 x.Dialect<MsSql2008Dialect>();
                 x.IsolationLevel = IsolationLevel.RepeatableRead;
@@ -50,7 +50,7 @@ namespace Repository
             //configuration.AddAssembly(Assembly.GetExecutingAssembly());
 
             var dbConn = MsSqlConfiguration.MsSql2008
-              .ConnectionString("Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;").ShowSql();
+              .ConnectionString("Server=localhost\\SQLEXPRESS;Database=elements;Trusted_Connection=True;").ShowSql();
             //.Username("admin")
             //.Password("xb!0YLor9gC0nRK"));
             var sessionFactory = Fluently.Configure()

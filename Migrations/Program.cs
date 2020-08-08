@@ -30,7 +30,7 @@ namespace Migrations
                     // Add SQLite support to FluentMigrator
                     .AddSqlServer2016()
                     // Set the connection string
-                    .WithGlobalConnectionString("Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;")
+                    .WithGlobalConnectionString("Server=localhost\\SQLEXPRESS;Database=elements;Trusted_Connection=True;")
 
                     // Define the assembly containing the migrations
                     .ScanIn(typeof(Program).Assembly).For.Migrations())
@@ -50,6 +50,10 @@ namespace Migrations
             bool canRunUp = runner.HasMigrationsToApplyUp();
             // Execute the migrations
             runner.MigrateUp();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
     }
 }

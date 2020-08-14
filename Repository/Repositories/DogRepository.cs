@@ -4,6 +4,7 @@ using Repository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Gender = Repository.Models.Gender;
 
 namespace Repository
 {
@@ -33,12 +34,30 @@ namespace Repository
             return dogModel;
         }
 
-        public bool CreateDog(string name)
+        public DogModel GetDefaultDog()
+        {
+            DogModel dogModel = new DogModel();
+            using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
+            {
+                var dog = session.Query<Dog>().FirstOrDefault(c => !c.Deleted.HasValue);
+                if (dog != null)
+                {
+                    dogModel = dog.ToDogModel();
+                }
+            }
+            return dogModel;
+        }
+
+        public bool CreateDog(DogModel dogModel)
         {
             Dog newDog = new Dog
             {
-                Name = name,
-                Created = DateTime.UtcNow
+                Name = dogModel.Name,
+                AdoptedDate = dogModel.AdoptedDate,
+                Birthdate = dogModel.Birthdate,
+                Gender = (Gender)dogModel.Gender,
+                Created = DateTime.UtcNow,
+                Modified = DateTime.UtcNow
             };
             using (ISession session = NHibernateSession.OpenSession())
             {

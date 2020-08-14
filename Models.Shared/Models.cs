@@ -10,6 +10,18 @@ namespace Models
     }
     public partial class DogModel
     {
+        public DogModel() { }
+        public DogModel(DogModel clone)
+        {
+            DogId = clone?.DogId ?? new DogId();
+            Name = clone?.Name;
+            AdoptedDate = clone?.AdoptedDate;
+            Birthdate = clone?.Birthdate;
+            Gender = clone.Gender;
+            Created = clone?.Created ?? DateTime.UtcNow;
+            Modified = clone?.Modified ?? DateTime.UtcNow;
+            Deleted = clone?.Deleted;
+        }
         [Required]
         public DogId DogId { get; set; }
         [Required]
@@ -42,7 +54,7 @@ namespace Models
         [Required]
         public FolderModel Folder { get; set; }
         [Required]
-        public Guid Key { get; set; }
+        public Guid DocumentKey { get; set; }
         [Required]
         public DateTime Created { get; set; }
         public DateTime LastViewed { get; set; }

@@ -24,10 +24,14 @@ namespace Business
         {
             return _dogRepository.GetDogById(dogId);
         }
+        public DogModel GetDefaultDog()
+        {
+            return _dogRepository.GetDefaultDog();
+        }
 
         public bool CreateNewDog(DogCreateRequest request)
         {
-            return _dogRepository.CreateDog(request.Dog.Name);
+            return _dogRepository.CreateDog(request.Dog);
         }
 
         public bool UpdateDog(DogUpdateRequest request)

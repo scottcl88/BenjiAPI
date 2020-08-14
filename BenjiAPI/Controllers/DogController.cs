@@ -33,6 +33,13 @@ namespace BenjiAPI
             return _dogManager.GetAllDogs();
         }
         [HttpGet]
+        [Route("Get")]
+        [EnableCors("MyPolicy")]
+        public DogModel Get()
+        {
+            return _dogManager.GetDefaultDog();
+        }
+        [HttpGet]
         [Route("Get/{Id}")]
         [EnableCors("MyPolicy")]
         public DogModel Get(int Id)

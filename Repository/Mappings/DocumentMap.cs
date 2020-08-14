@@ -14,8 +14,8 @@ namespace Repository.Mappings
             Map(x => x.Description).Nullable();
             Map(x => x.Type).Not.Nullable();
             Map(x => x.ByteSize).Not.Nullable();
-            Map(x => x.Folder).Not.Nullable();
-            Map(x => x.Key).Not.Nullable();
+            References(x => x.Folder, "FolderId").Not.Nullable();
+            Map(x => x.DocumentKey).Not.Nullable();
             Map(x => x.LastViewed).Not.Nullable();
             Map(x => x.Created).Not.Nullable();
             Map(x => x.Modified).Not.Nullable();

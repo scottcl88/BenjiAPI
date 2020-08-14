@@ -37,6 +37,7 @@ namespace BenjiAPI
             //services.AddCors();
             services.AddControllers();
             services.AddScoped<DogManager>();
+            services.AddScoped<DocumentManager>();
             //services.AddCors(c => c.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod()));
         }
 

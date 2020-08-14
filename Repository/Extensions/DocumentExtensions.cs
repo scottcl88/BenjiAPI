@@ -15,7 +15,7 @@ namespace Repository
                 Type = dbDocument.Type,
                 ByteSize = dbDocument.ByteSize,
                 Folder = dbDocument.Folder.ToFolderModel(),
-                Key = dbDocument.Key,
+                DocumentKey = dbDocument.DocumentKey,
                 LastViewed = dbDocument.LastViewed,
                 Created = dbDocument.Created,
                 Modified = dbDocument.Modified,

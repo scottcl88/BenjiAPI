@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Business;
 using DataExtensions;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MimeTypes;
 using Models;
 
 namespace BenjiAPI
@@ -18,38 +21,121 @@ namespace BenjiAPI
     public class DocumentController : ControllerBase
     {
         private DocumentManager _documentManager;
+        private FolderManager _folderManager;
         private readonly ILogger<DocumentController> _logger;
+        private IWebHostEnvironment _hostingEnvironment;
+        private readonly string[] permittedExtensions = new string[] { ".txt", ".pdf" };
+        private readonly long _fileSizeLimit = 10000000;
 
-        public DocumentController(ILogger<DocumentController> logger, DocumentManager documentManager)
+
+        public DocumentController(ILogger<DocumentController> logger, DocumentManager documentManager, FolderManager folderManager, IWebHostEnvironment environment)
         {
             _logger = logger;
             _documentManager = documentManager;
+            _folderManager = folderManager;
+            _hostingEnvironment = environment;
         }
 
         [HttpGet]
         [Route("GetAll")]
+        [EnableCors("MyPolicy")]
         public List<DocumentModel> GetAll()
         {
             return _documentManager.GetAllDocuments();
         }
         [HttpGet]
-        [Route("Get/{Id}")]
+        [Route("Get/{id}")]
         [EnableCors("MyPolicy")]
-        public DocumentModel Get(int Id)
+        public DocumentModel Get(int id)
         {
-            return _documentManager.GetDocumentById(new DocumentId() { Value = Id });
+            return _documentManager.GetDocumentById(new DocumentId() { Value = id });
         }
         [HttpPost]
         [Route("Add")]
+        [EnableCors("MyPolicy")]
         public bool Add([FromBody] DocumentCreateRequest request)
         {
             return _documentManager.CreateNewDocument(request);
         }
         [HttpPost]
         [Route("Update")]
+        [EnableCors("MyPolicy")]
         public bool Update([FromBody] DocumentUpdateRequest request)
         {
             return _documentManager.UpdateDocument(request);
+        }
+
+
+        [HttpPost]
+        [Route("upload/multiple/{folderId}")]
+        [EnableCors("MyPolicy")]
+        public async Task<IActionResult> Multiple(IFormFile[] files, int folderId)
+        {
+            try
+            {
+                foreach (var file in files)
+                {
+                    if (file.Length > 0)
+                    {
+                        var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+
+                        if (string.IsNullOrEmpty(ext) || !permittedExtensions.Contains(ext))
+                        {
+                            return StatusCode(500, "Invalid extension");
+                        }
+                        if (file.Length > _fileSizeLimit)
+                        {
+                            return StatusCode(500, "Exceeds file limit");
+                        }
+                        var folder = _folderManager.GetFolderById(new FolderId() { Value = folderId });
+                        if (folder == null)
+                        {
+                            return StatusCode(500, "Invalid folder id");
+                        }
+                        var documentKey = Guid.NewGuid();
+                        var uploads = Path.Combine("F:/", "uploads", folder.Name);
+                        Directory.CreateDirectory(uploads);
+                        string untrustedFileName = file.FileName;
+                        DateTime createdDate = DateTime.UtcNow;
+                        string safeFileName = GetFilePath(documentKey, file.ContentType, createdDate);
+                        var filePath = Path.Combine(uploads, safeFileName);
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(fileStream);
+                        }
+                        var request = new DocumentCreateRequest()
+                        {
+                            Document = new DocumentModel()
+                            {
+                                ByteSize = (int)file.Length,
+                                FileName = untrustedFileName,
+                                ContentType = file.ContentType,
+                                Folder = folder,
+                                DocumentKey = documentKey,
+                                Modified = DateTime.UtcNow,
+                                LastViewed = DateTime.UtcNow,
+                                Created = createdDate
+                            }
+                        };
+                        var result = _documentManager.CreateNewDocument(request);
+                        if (!result)
+                        {
+                            return StatusCode(500, "Failed to save document");
+                        }
+                    }
+                }
+                return StatusCode(200);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        private string GetFilePath(Guid docKey, string contentType, DateTime createdDate)
+        {
+            string firstKeyPart = docKey.ToString().Substring(0, 8);
+            return $"{createdDate.ToString("yyyy-MM-dd")}_{firstKeyPart}{MimeTypeMap.GetExtension(contentType)}";
         }
     }
 }

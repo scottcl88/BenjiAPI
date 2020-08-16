@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NHibernate.Mapping;
+using System;
+using System.Collections.Generic;
 
 namespace Repository.Models
 {
@@ -7,7 +9,7 @@ namespace Repository.Models
         public virtual long DocumentId { get; set; }
         public virtual string FileName { get; set; }
         public virtual string Description { get; set; }
-        public virtual string Type { get; set; }
+        public virtual string ContentType { get; set; }
         public virtual int ByteSize { get; set; }
         public virtual Folder Folder { get; set; }
         public virtual Guid DocumentKey { get; set; }
@@ -15,6 +17,7 @@ namespace Repository.Models
         public virtual DateTime LastViewed { get; set; }
         public virtual DateTime Modified { get; set; }
         public virtual DateTime? Deleted { get; set; }
+        public virtual IList<DocumentTag> Tags { get; set; }
     }
 
 }

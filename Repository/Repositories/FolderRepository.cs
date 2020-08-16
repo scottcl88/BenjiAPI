@@ -38,7 +38,9 @@ namespace Repository
             Folder newFolder = new Folder
             {
                 Name = name,
-                Created = DateTime.UtcNow
+                Created = DateTime.UtcNow,
+                Modified = DateTime.UtcNow,
+                LastViewed = DateTime.UtcNow
             };
             using (ISession session = NHibernateSession.OpenSession())
             {

@@ -12,7 +12,7 @@ namespace Repository.Mappings
             Id(x => x.DocumentId).Not.Nullable();
             Map(x => x.FileName).Not.Nullable();
             Map(x => x.Description).Nullable();
-            Map(x => x.Type).Not.Nullable();
+            Map(x => x.ContentType).Not.Nullable();
             Map(x => x.ByteSize).Not.Nullable();
             References(x => x.Folder, "FolderId").Not.Nullable();
             Map(x => x.DocumentKey).Not.Nullable();
@@ -20,6 +20,7 @@ namespace Repository.Mappings
             Map(x => x.Created).Not.Nullable();
             Map(x => x.Modified).Not.Nullable();
             Map(x => x.Deleted).Nullable();
+            //HasMany<DocumentTag>(x => x.Tags);
         }
     }
 }

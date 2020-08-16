@@ -25,7 +25,7 @@ namespace Repository
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
                 var document = session.Query<Document>().FirstOrDefault(c => c.DocumentId == documentId.Value);
-                if(document != null)
+                if (document != null)
                 {
                     documentModel = document.ToDocumentModel();
                 }
@@ -33,19 +33,24 @@ namespace Repository
             return documentModel;
         }
 
-        public bool CreateDocument(string name)
+        public bool CreateDocument(DocumentModel model)
         {
             Document newDocument = new Document
             {
-                FileName = name,
-                Created = DateTime.UtcNow
+                FileName = model.FileName,
+                Created = model.Created,
+                ContentType = model.ContentType,
+                ByteSize = model.ByteSize,
+                Description = model.Description,
+                DocumentKey = model.DocumentKey,
+                LastViewed = model.LastViewed,
+                Modified = model.Modified
             };
             using (ISession session = NHibernateSession.OpenSession())
             {
-                //User foundUser = session.Query<User>().FirstOrDefault(u => u.HashedLoginToken == hashedLoginToken);
-                //if (foundUser == null) return false;
-                //newDocument.User = foundUser;
-                //newCar.UserId = foundUser.UserId;
+                Folder foundFolder = session.Query<Folder>().FirstOrDefault(f => f.FolderId == model.Folder.FolderId.Value);
+                if (foundFolder == null) return false;
+                newDocument.Folder = foundFolder;
                 using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
                 {
                     session.Save(newDocument); //  Save the user in session
@@ -64,6 +69,9 @@ namespace Repository
                 foundDocument.FileName = documentModel.FileName;
                 foundDocument.Description = documentModel.Description;
                 foundDocument.Modified = DateTime.UtcNow;
+                Folder foundFolder = session.Query<Folder>().FirstOrDefault(f => f.FolderId == documentModel.Folder.FolderId.Value);
+                if (foundFolder == null) return false;
+                foundDocument.Folder = foundFolder;
                 using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
                 {
                     session.Update(foundDocument); //  Save the user in session

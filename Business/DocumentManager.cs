@@ -27,7 +27,7 @@ namespace Business
 
         public bool CreateNewDocument(DocumentCreateRequest request)
         {
-            return _documentRepository.CreateDocument(request.Document.FileName);
+            return _documentRepository.CreateDocument(request.Document);
         }
 
         public bool UpdateDocument(DocumentUpdateRequest request)

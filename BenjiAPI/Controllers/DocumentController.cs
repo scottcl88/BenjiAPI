@@ -134,8 +134,7 @@ namespace BenjiAPI
 
         private string GetFilePath(Guid docKey, string contentType, DateTime createdDate)
         {
-            string firstKeyPart = docKey.ToString().Substring(0, 8);
-            return $"{createdDate.ToString("yyyy-MM-dd")}_{firstKeyPart}{MimeTypeMap.GetExtension(contentType)}";
+            return $"{createdDate:yyyy-MM-dd}_{docKey}{MimeTypeMap.GetExtension(contentType)}";
         }
     }
 }

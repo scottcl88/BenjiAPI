@@ -6,12 +6,16 @@ namespace Repository.Models
     {
         public virtual long HealthId { get; set; }
         public virtual Dog Dog { get; set; }
-        public virtual decimal Weight { get; set; }
-        public virtual decimal Height { get; set; }
-        public virtual decimal Length { get; set; }
-        public virtual decimal Waist { get; set; }
-        public virtual DateTime? Created { get; set; }
-        public virtual DateTime? Modified { get; set; }
+        public virtual decimal? Weight { get; set; }
+        public virtual decimal? Height { get; set; }
+        public virtual decimal? Length { get; set; }
+        public virtual decimal? Waist { get; set; }
+        public virtual decimal? TailLength { get; set; }
+        public virtual decimal? MouthCircumference { get; set; }
+        public virtual decimal? NoseEyeLength { get; set; }
+        public virtual bool FromVet { get; set; }
+        public virtual DateTime Created { get; set; }
+        public virtual DateTime Modified { get; set; }
         public virtual DateTime? Deleted { get; set; }
     }
 }

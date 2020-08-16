@@ -22,7 +22,7 @@ namespace Migrations
 
         public override void Down()
         {
-            Delete.Table("Dog");
+            Delete.Table("Health");
         }
     }
 }

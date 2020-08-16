@@ -15,51 +15,48 @@ namespace BenjiAPI
     [ApiController]
     [Route("[controller]")]
     [EnableCors("MyPolicy")]
-    public class DogController : ControllerBase
+    public class HealthController : ControllerBase
     {
+        private HealthManager _healthManager;
         private DogManager _dogManager;
-        private readonly ILogger<DogController> _logger;
+        private readonly ILogger<HealthController> _logger;
 
-        public DogController(ILogger<DogController> logger, DogManager dogManager)
+        public HealthController(ILogger<HealthController> logger, HealthManager healthManager, DogManager dogManager)
         {
             _logger = logger;
+            _healthManager = healthManager;
             _dogManager = dogManager;
         }
 
         [HttpGet]
         [Route("GetAll")]
         [EnableCors("MyPolicy")]
-        public List<DogModel> GetAll()
+        public List<HealthModel> GetAll()
         {
-            return _dogManager.GetAllDogs();
+            var defaultDog = _dogManager.GetDefaultDog();
+            return _healthManager.GetAllHealth(defaultDog);
         }
-        [HttpGet]
-        [Route("Get")]
-        [EnableCors("MyPolicy")]
-        public DogModel Get()
-        {
-            return _dogManager.GetDefaultDog();
-        }
+
         [HttpGet]
         [Route("Get/{Id}")]
         [EnableCors("MyPolicy")]
-        public DogModel Get(int Id)
+        public HealthModel Get(int Id)
         {
-            return _dogManager.GetDogById(new DogId() { Value = Id });
+            return _healthManager.GetHealthById(new HealthId() { Value = Id });
         }
         [HttpPost]
         [Route("Add")]
         [EnableCors("MyPolicy")]
-        public bool Add([FromBody] DogCreateRequest request)
+        public bool Add([FromBody] HealthCreateRequest request)
         {
-            return _dogManager.CreateNewDog(request);
+            return _healthManager.CreateNewHealth(request);
         }
         [HttpPost]
         [Route("Update")]
         [EnableCors("MyPolicy")]
-        public bool Update([FromBody] DogUpdateRequest request)
+        public bool Update([FromBody] HealthUpdateRequest request)
         {
-            return _dogManager.UpdateDog(request);
+            return _healthManager.UpdateHealth(request);
         }
     }
 }

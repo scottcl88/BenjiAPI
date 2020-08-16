@@ -4,11 +4,19 @@ namespace DataExtensions
 {
     public class HealthCreateRequest
     {
-        public DogModel Dog { get; set; }
+        public HealthCreateRequest()
+        {
+            Health = new HealthModel();
+        }
+        public HealthModel Health { get; set; }
     }
 
     public class HealthUpdateRequest
     {
+        public HealthUpdateRequest()
+        {
+            Health = new HealthModel();
+        }
         public HealthModel Health { get; set; }
     }
 }

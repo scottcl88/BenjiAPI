@@ -1,4 +1,5 @@
 ﻿using Models;
+using Remotion.Linq.Clauses.ResultOperators;
 using Repository.Models;
 
 namespace Repository
@@ -25,6 +26,15 @@ namespace Repository
             return new HealthModel()
             {
                 Dog = dbHealth.Dog.ToDogModel(),
+                HealthId = new HealthId() { Value = dbHealth.HealthId },
+                Weight = dbHealth.Weight,
+                Height = dbHealth.Height,
+                Length = dbHealth.Length,
+                Waist = dbHealth.Waist,
+                FromVet = dbHealth.FromVet,
+                MouthCircumference = dbHealth.MouthCircumference,
+                NoseEyeLength = dbHealth.NoseEyeLength,
+                TailLength = dbHealth.TailLength,
                 Created = dbHealth.Created,
                 Modified = dbHealth.Modified,
                 Deleted = dbHealth.Deleted

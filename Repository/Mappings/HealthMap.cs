@@ -10,14 +10,18 @@ namespace Repository.Mappings
         {
             Table("Health");
             Id(x => x.HealthId);
-            Map(x => x.Waist);
-            Map(x => x.Length);
-            Map(x => x.Height);
-            Map(x => x.Weight);
-            Map(x => x.Created);
-            Map(x => x.Modified);
+            Map(x => x.Waist).Nullable();
+            Map(x => x.Length).Nullable();
+            Map(x => x.Height).Nullable();
+            Map(x => x.Weight).Nullable();
+            Map(x => x.TailLength).Nullable();
+            Map(x => x.MouthCircumference).Nullable();
+            Map(x => x.NoseEyeLength).Nullable();
+            Map(x => x.FromVet);
+            Map(x => x.Created).Not.Nullable();
+            Map(x => x.Modified).Not.Nullable();
             Map(x => x.Deleted);
-            References(x => x.Dog);
+            References(x => x.Dog, "DogId").Not.Nullable();
         }
     }
 }

@@ -20,15 +20,38 @@ namespace Repository
             return healthModels;
         }
 
-        public bool CreateHealth(DogId dogId)
+        public HealthModel GetHealthById(HealthId healthId)
+        {
+            HealthModel healthModel = new HealthModel();
+            using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
+            {
+                var health = session.Query<Health>().FirstOrDefault(c => c.HealthId == healthId.Value);
+                if (health != null)
+                {
+                    healthModel = health.ToHealthModel();
+                }
+            }
+            return healthModel;
+        }
+
+        public bool CreateHealth(HealthModel healthModel)
         {
             Health newHealth = new Health
             {
-                Created = DateTime.UtcNow
+                Created = healthModel.Created,
+                Modified = healthModel.Modified,
+                FromVet = healthModel.FromVet,
+                Height = healthModel.Height,
+                Length = healthModel.Length,
+                MouthCircumference = healthModel.MouthCircumference,
+                NoseEyeLength = healthModel.NoseEyeLength,
+                TailLength = healthModel.TailLength,
+                Waist = healthModel.Waist,
+                Weight = healthModel.Weight
             };
             using (ISession session = NHibernateSession.OpenSession())
             {
-                Dog foundDog = session.Query<Dog>().FirstOrDefault(u => u.DogId == dogId.Value);
+                Dog foundDog = session.Query<Dog>().FirstOrDefault(u => u.DogId == healthModel.Dog.DogId.Value);
                 if (foundDog == null) return false;
                 newHealth.Dog = foundDog;
                 using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
@@ -47,6 +70,14 @@ namespace Repository
                 Health foundHealth = session.Query<Health>().FirstOrDefault(c => c.HealthId == healthModel.HealthId.Value);
                 if (foundHealth == null) return false;
                 foundHealth.Modified = DateTime.UtcNow;
+                foundHealth.FromVet = healthModel.FromVet;
+                foundHealth.Height = healthModel.Height;
+                foundHealth.Length = healthModel.Length;
+                foundHealth.MouthCircumference = healthModel.MouthCircumference;
+                foundHealth.NoseEyeLength = healthModel.NoseEyeLength;
+                foundHealth.TailLength = healthModel.TailLength;
+                foundHealth.Waist = healthModel.Waist;
+                foundHealth.Weight = healthModel.Weight;
                 using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
                 {
                     session.Update(foundHealth); //  Save the user in session

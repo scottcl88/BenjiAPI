@@ -11,19 +11,23 @@ namespace Business
     {
         private readonly HealthRepository _healthRepository;
 
-        public HealthManager(HealthRepository healthRepository)
+        public HealthManager()
         {
-            _healthRepository = healthRepository;
+            _healthRepository = new HealthRepository();
         }
 
         public List<HealthModel> GetAllHealth(DogModel dogModel)
         {
             return _healthRepository.GetAllHealthForDog(dogModel.DogId).ToList();
         }
-
-        public bool CreateHealth(HealthCreateRequest request)
+        public HealthModel GetHealthById(HealthId healthId)
         {
-            return _healthRepository.CreateHealth(request.Dog.DogId);
+            return _healthRepository.GetHealthById(healthId);
+        }
+
+        public bool CreateNewHealth(HealthCreateRequest request)
+        {
+            return _healthRepository.CreateHealth(request.Health);
         }
 
         public bool UpdateHealth(HealthUpdateRequest request)

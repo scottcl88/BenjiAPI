@@ -45,7 +45,18 @@ namespace BenjiAPI
         [EnableCors("MyPolicy")]
         public DogModel Get(int Id)
         {
-            return _dogManager.GetDogById(new DogId() { Value = Id });
+            try
+            {
+
+                return _dogManager.GetDogById(new DogId() { Value = Id });
+            }
+            catch(Exception ex)
+            {
+                return new DogModel()
+                {
+                    Name = ex.Message
+                };
+            }
         }
         [HttpPost]
         [Route("Add")]

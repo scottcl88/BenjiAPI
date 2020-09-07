@@ -4,7 +4,7 @@ using System.Data.SqlTypes;
 namespace Migrations
 {
     [Migration(111)]
-    public class M11AddDogToIncident : Migration
+    public class M111AddDogToIncident : Migration
     {
         public override void Up()
         {

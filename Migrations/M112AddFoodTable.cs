@@ -13,9 +13,9 @@ namespace Migrations
                 .WithColumn("DogId").AsInt64().ForeignKey("Dog", "DogId")
                 .WithColumn("AmountInOunces").AsDecimal().NotNullable()
                 .WithColumn("FrequencyPerDay").AsDecimal().NotNullable()
-                .WithColumn("CreationDateTime").AsDateTime().NotNullable()
-                .WithColumn("ModificationDateTime").AsDateTime().NotNullable()
-                .WithColumn("DeletionDateTime").AsDateTime().Nullable();
+                .WithColumn("Created").AsDateTime().NotNullable()
+                .WithColumn("Modified").AsDateTime().NotNullable()
+                .WithColumn("Deleted").AsDateTime().Nullable();
         }
 
         public override void Down()

@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)FolderRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DocumentRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DogRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BoardingRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)InsuranceRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FoodRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IncidentRequest.cs" />

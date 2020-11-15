@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Repository.Models
 {
@@ -12,6 +13,7 @@ namespace Repository.Models
         public virtual DateTime Created { get; set; }
         public virtual DateTime Modified { get; set; }
         public virtual DateTime? Deleted { get; set; }
+        public virtual IList<Boarding> BoardingList { get; set; }
     }
 
     public enum Gender

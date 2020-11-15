@@ -9,6 +9,7 @@
     <Import_RootNamespace>Models.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BoardingModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)InsuranceModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FoodModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IncidentModel.cs" />

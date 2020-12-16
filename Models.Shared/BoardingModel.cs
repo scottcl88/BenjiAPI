@@ -11,6 +11,23 @@ namespace Models.Shared
     }
     public partial class BoardingModel
     {
+        public BoardingModel() { }
+        public BoardingModel(BoardingModel clone)
+        {
+            BoardingId = clone?.BoardingId ?? new BoardingId();
+            Dog = clone?.Dog ?? new DogModel();
+            StartDateTime = clone?.StartDateTime;
+            EndDateTime = clone?.EndDateTime;
+            PaymentAmount = clone?.PaymentAmount;
+            Company = clone?.Company;
+            Address = clone?.Address;
+            Comments = clone?.Comments;
+            Website = clone?.Website;
+            Reason = clone?.Reason;
+            Created = clone?.Created ?? DateTime.UtcNow;
+            Modified = clone?.Modified ?? DateTime.UtcNow;
+            Deleted = clone?.Deleted;
+        }
         public BoardingId BoardingId { get; set; }
         [Required]
         public DogModel Dog { get; set; }

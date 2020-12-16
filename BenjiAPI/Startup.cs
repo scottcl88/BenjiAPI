@@ -41,6 +41,7 @@ namespace BenjiAPI
             services.AddScoped<FolderManager>();
             services.AddScoped<HealthManager>();
             services.AddScoped<IncidentManager>();
+            services.AddScoped<BoardingManager>();
             services.AddScoped<FoodManager>();
             //services.AddCors(c => c.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod()));
         }

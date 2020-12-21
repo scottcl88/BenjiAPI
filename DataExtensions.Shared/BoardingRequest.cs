@@ -20,4 +20,8 @@ namespace DataExtensions
         }
         public BoardingModel Boarding { get; set; }
     }
+    public class BoardingDeleteRequest
+    {
+        public BoardingId BoardingId { get; set; }
+    }
 }

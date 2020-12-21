@@ -59,5 +59,12 @@ namespace BenjiAPI
         {
             return _boardingManager.UpdateBoarding(request);
         }
+        [HttpPost]
+        [Route("Delete")]
+        [EnableCors("MyPolicy")]
+        public bool Delete([FromBody] BoardingDeleteRequest request)
+        {
+            return _boardingManager.DeleteBoarding(request);
+        }
     }
 }

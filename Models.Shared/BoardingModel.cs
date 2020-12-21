@@ -29,7 +29,6 @@ namespace Models.Shared
             Deleted = clone?.Deleted;
         }
         public BoardingId BoardingId { get; set; }
-        [Required]
         public DogModel Dog { get; set; }
         public DateTime? StartDateTime { get; set; }
         public DateTime? EndDateTime { get; set; }

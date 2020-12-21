@@ -10,7 +10,7 @@ namespace Repository.Mappings
         {
             Table("Insurance");
             Id(x => x.InsuranceId);
-            Component(c => c.PolicyId);
+            Map(x => x.PolicyId);
             Map(x => x.Created).Not.Nullable();
             Map(x => x.Modified).Not.Nullable();
             Map(x => x.Deleted);

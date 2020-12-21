@@ -35,5 +35,9 @@ namespace Business
         {
             return _boardingRepository.UpdateBoarding(request.Boarding);
         }
+        public bool DeleteBoarding(BoardingDeleteRequest request)
+        {
+            return _boardingRepository.DeleteBoarding(request);
+        }
     }
 }

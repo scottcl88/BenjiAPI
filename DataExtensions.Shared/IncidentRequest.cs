@@ -20,4 +20,8 @@ namespace DataExtensions
         }
         public IncidentModel Incident { get; set; }
     }
+    public class IncidentDeleteRequest
+    {
+        public IncidentId IncidentId { get; set; }
+    }
 }

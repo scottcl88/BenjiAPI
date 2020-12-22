@@ -46,9 +46,26 @@ namespace BenjiAPI
         [HttpGet]
         [Route("Get/{id}")]
         [EnableCors("MyPolicy")]
-        public DocumentModel Get(int id)
+        public DocumentModel Get(long id)
         {
             return _documentManager.GetDocumentById(new DocumentId() { Value = id });
+        }
+        [HttpGet]
+        [Route("Download/{documentId}")]
+        [EnableCors("MyPolicy")]
+        public FileResult Download(long documentId)
+        {
+            try
+            {
+                var doc = _documentManager.GetDocumentById(new DocumentId() { Value = documentId });
+                string filePath = GetFilePath(doc.DocumentKey, doc.Folder.Name, doc.ContentType, doc.Created);
+                byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+                return File(fileBytes, doc.ContentType, doc.FileName);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         [HttpPost]
         [Route("Add")]
@@ -62,7 +79,16 @@ namespace BenjiAPI
         [EnableCors("MyPolicy")]
         public bool Update([FromBody] DocumentUpdateRequest request)
         {
-            return _documentManager.UpdateDocument(request);
+            var originalDoc = _documentManager.GetDocumentById(request.Document.DocumentId);
+            var result = _documentManager.UpdateDocument(request);
+            if (result)
+            {
+                var newDoc = _documentManager.GetDocumentById(request.Document.DocumentId);
+                string originalFilePath = GetFilePath(originalDoc.DocumentKey, originalDoc.Folder.Name, originalDoc.ContentType, originalDoc.Created);
+                string newFilePath = GetFilePath(newDoc.DocumentKey, newDoc.Folder.Name, newDoc.ContentType, newDoc.Created);
+                System.IO.File.Move(originalFilePath, newFilePath);
+            }
+            return result;
         }
 
 
@@ -93,13 +119,10 @@ namespace BenjiAPI
                             return StatusCode(500, "Invalid folder id");
                         }
                         var documentKey = Guid.NewGuid();
-                        var uploads = Path.Combine("F:/", "uploads", folder.Name);
-                        Directory.CreateDirectory(uploads);
                         string untrustedFileName = file.FileName;
                         DateTime createdDate = DateTime.UtcNow;
-                        string safeFileName = GetFilePath(documentKey, file.ContentType, createdDate);
-                        var filePath = Path.Combine(uploads, safeFileName);
-                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        string filePath = GetFilePath(documentKey, folder.Name, file.ContentType, createdDate);
+                        using (var fileStream = new FileStream(filePath, FileMode.CreateNew))
                         {
                             await file.CopyToAsync(fileStream);
                         }
@@ -132,9 +155,12 @@ namespace BenjiAPI
             }
         }
 
-        private string GetFilePath(Guid docKey, string contentType, DateTime createdDate)
+        private string GetFilePath(Guid docKey, string folderName, string contentType, DateTime createdDate)
         {
-            return $"{createdDate:yyyy-MM-dd}_{docKey}{MimeTypeMap.GetExtension(contentType)}";
+            var uploads = Path.Combine(@"C:\Users\Scott\Documents", "uploads", folderName);
+            Directory.CreateDirectory(uploads);
+            var safeFileName = $"{createdDate:yyyy-MM-dd}_{docKey}{MimeTypeMap.GetExtension(contentType)}";
+            return Path.Combine(uploads, safeFileName);
         }
     }
 }

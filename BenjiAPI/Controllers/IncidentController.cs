@@ -59,5 +59,12 @@ namespace BenjiAPI
         {
             return _incidentManager.UpdateIncident(request);
         }
+        [HttpPost]
+        [Route("Delete")]
+        [EnableCors("MyPolicy")]
+        public bool Delete([FromBody] IncidentDeleteRequest request)
+        {
+            return _incidentManager.DeleteIncident(request);
+        }
     }
 }

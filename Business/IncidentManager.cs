@@ -35,5 +35,9 @@ namespace Business
         {
             return _incidentRepository.UpdateIncident(request.Incident);
         }
+        public bool DeleteIncident(IncidentDeleteRequest request)
+        {
+            return _incidentRepository.DeleteIncident(request);
+        }
     }
 }

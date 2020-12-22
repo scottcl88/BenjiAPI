@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DataExtensions;
+using Models;
 using Models.Shared;
 using NHibernate;
 using Repository.Models;
@@ -74,6 +75,21 @@ namespace Repository
                 using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
                 {
                     session.Update(foundIncident); //  Save the user in session
+                    transaction.Commit();   //  Commit the changes to the database
+                }
+            }
+            return true;
+        }
+        public bool DeleteIncident(IncidentDeleteRequest request)
+        {
+            using (ISession session = NHibernateSession.OpenSession())
+            {
+                Incident foundvaccine = session.Query<Incident>().FirstOrDefault(c => c.IncidentId == request.IncidentId.Value);
+                if (foundvaccine == null) return false;
+                foundvaccine.Deleted = DateTime.UtcNow;
+                using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
+                {
+                    session.Update(foundvaccine); //  Save the user in session
                     transaction.Commit();   //  Commit the changes to the database
                 }
             }

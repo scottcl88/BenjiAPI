@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Models.Shared
@@ -26,8 +29,58 @@ namespace Models.Shared
         Pee = 1,
         Poop = 2,
         Diarrhea = 3,
+        [Display(Name = "Throw up")]
         ThrowUp = 4,
         Hurt = 5,
+        [Display(Name = "Run Away")]
         RanAway = 6
+    }
+
+    public static class Extensions
+    {
+        public static List<string> GetDisplayNames(this Type enm)
+        {
+            var displaynames = new List<string>();
+            var names = Enum.GetNames(enm);
+            foreach (var name in names)
+            {
+                var field = enm.GetField(name);
+                var fds = field.GetCustomAttributes(typeof(DisplayAttribute), true);
+
+                if (fds.Length == 0)
+                {
+                    displaynames.Add(name);
+                }
+
+                foreach (DisplayAttribute fd in fds)
+                {
+                    displaynames.Add(fd.Name);
+                }
+            }
+            return displaynames;
+        }
+        public static Dictionary<string, int> GetDisplayDictonary(this Type enm)
+        {
+            var displaynames = new Dictionary<string, int>();
+            var names = Enum.GetNames(enm);
+            foreach (var name in names)
+            {
+                var field = enm.GetField(name);
+                var fds = field.GetCustomAttributes(typeof(DisplayAttribute), true);
+
+                var enmValue = (int)Enum.Parse(enm, name);
+
+                if (fds.Length == 0)
+                {
+                    displaynames.Add(name, enmValue);
+                }
+
+                foreach (DisplayAttribute fd in fds)
+                {
+                    displaynames.Add(fd.Name, enmValue);
+                }
+            }
+            return displaynames;
+        }
     }
 }

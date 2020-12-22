@@ -19,4 +19,8 @@ namespace DataExtensions
         }
         public DocumentModel Document { get; set; }
     }
+    public partial class DocumentDeleteRequest
+    {
+        public DocumentId DocumentId { get; set; }
+    }
 }

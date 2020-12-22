@@ -157,7 +157,7 @@ namespace BenjiAPI
 
         private string GetFilePath(Guid docKey, string folderName, string contentType, DateTime createdDate)
         {
-            var uploads = Path.Combine(@"C:\Users\Scott\Documents", "uploads", folderName);
+            var uploads = Path.Combine(Directory.GetCurrentDirectory(), "uploads", folderName);
             Directory.CreateDirectory(uploads);
             var safeFileName = $"{createdDate:yyyy-MM-dd}_{docKey}{MimeTypeMap.GetExtension(contentType)}";
             return Path.Combine(uploads, safeFileName);

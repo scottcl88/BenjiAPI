@@ -1,5 +1,4 @@
 ﻿using Models;
-using System;
 
 namespace DataExtensions
 {
@@ -9,14 +8,17 @@ namespace DataExtensions
         {
             Dog = new DogModel();
         }
+
         public DogModel Dog { get; set; }
     }
+
     public partial class DogUpdateRequest
     {
         public DogUpdateRequest()
         {
             Dog = new DogModel();
         }
+
         public DogModel Dog { get; set; }
     }
 }

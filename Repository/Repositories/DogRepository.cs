@@ -20,13 +20,14 @@ namespace Repository
             }
             return dogModels;
         }
+
         public DogModel GetDogById(DogId dogId)
         {
             DogModel dogModel = new DogModel();
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
                 var dog = session.Query<Dog>().FirstOrDefault(c => c.DogId == dogId.Value);
-                if(dog != null)
+                if (dog != null)
                 {
                     dogModel = dog.ToDogModel();
                 }

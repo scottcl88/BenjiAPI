@@ -8,6 +8,7 @@ namespace DataExtensions
         {
             Health = new HealthModel();
         }
+
         public HealthModel Health { get; set; }
     }
 
@@ -17,6 +18,7 @@ namespace DataExtensions
         {
             Health = new HealthModel();
         }
+
         public HealthModel Health { get; set; }
     }
 }

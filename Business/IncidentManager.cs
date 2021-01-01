@@ -2,7 +2,6 @@
 using Models;
 using Models.Shared;
 using Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,6 +20,7 @@ namespace Business
         {
             return _incidentRepository.GetAllIncidentForDog(dogModel.DogId).ToList();
         }
+
         public IncidentModel GetIncidentById(IncidentId incidentId)
         {
             return _incidentRepository.GetIncidentById(incidentId);
@@ -35,6 +35,7 @@ namespace Business
         {
             return _incidentRepository.UpdateIncident(request.Incident);
         }
+
         public bool DeleteIncident(IncidentDeleteRequest request)
         {
             return _incidentRepository.DeleteIncident(request);

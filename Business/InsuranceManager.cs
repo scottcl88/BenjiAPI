@@ -2,7 +2,6 @@
 using Models;
 using Models.Shared;
 using Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,6 +20,7 @@ namespace Business
         {
             return _insuranceRepository.GetAllInsuranceForDog(dogModel.DogId).ToList();
         }
+
         public InsuranceModel GetInsuranceById(InsuranceId insuranceId)
         {
             return _insuranceRepository.GetInsuranceById(insuranceId);

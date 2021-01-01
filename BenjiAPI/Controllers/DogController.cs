@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Business;
+﻿using Business;
 using DataExtensions;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models;
+using System;
+using System.Collections.Generic;
 
 namespace BenjiAPI
 {
@@ -33,6 +30,7 @@ namespace BenjiAPI
         {
             return _dogManager.GetAllDogs();
         }
+
         [HttpGet]
         [Route("Get")]
         [EnableCors("MyPolicy")]
@@ -40,6 +38,7 @@ namespace BenjiAPI
         {
             return _dogManager.GetDefaultDog();
         }
+
         [HttpGet]
         [Route("Get/{Id}")]
         [EnableCors("MyPolicy")]
@@ -47,10 +46,9 @@ namespace BenjiAPI
         {
             try
             {
-
                 return _dogManager.GetDogById(new DogId() { Value = Id });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new DogModel()
                 {
@@ -58,6 +56,7 @@ namespace BenjiAPI
                 };
             }
         }
+
         [HttpPost]
         [Route("Add")]
         [EnableCors("MyPolicy")]
@@ -65,6 +64,7 @@ namespace BenjiAPI
         {
             return _dogManager.CreateNewDog(request);
         }
+
         [HttpPost]
         [Route("Update")]
         [EnableCors("MyPolicy")]

@@ -1,5 +1,4 @@
-﻿using NHibernate.Mapping;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Repository.Models
@@ -19,5 +18,4 @@ namespace Repository.Models
         public virtual DateTime? Deleted { get; set; }
         public virtual IList<DocumentTag> Tags { get; set; }
     }
-
 }

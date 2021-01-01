@@ -1,5 +1,4 @@
 ﻿using FluentMigrator;
-using System.Data.SqlTypes;
 
 namespace Migrations
 {
@@ -18,7 +17,7 @@ namespace Migrations
                 .WithColumn("Modified").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsDateTime().Nullable();
         }
-        
+
         public override void Down()
         {
             Delete.Table("Incident");

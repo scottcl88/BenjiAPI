@@ -1,6 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
 using Repository.Models;
-using NHibernate;
 
 namespace Repository.Mappings
 {

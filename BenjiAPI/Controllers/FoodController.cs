@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Business;
+﻿using Business;
 using DataExtensions;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Models;
 using Models.Shared;
+using System.Collections.Generic;
 
 namespace BenjiAPI
 {
@@ -45,6 +40,7 @@ namespace BenjiAPI
         {
             return _foodManager.GetFoodById(new FoodId() { Value = Id });
         }
+
         [HttpPost]
         [Route("Add")]
         [EnableCors("MyPolicy")]
@@ -52,6 +48,7 @@ namespace BenjiAPI
         {
             return _foodManager.CreateNewFood(request);
         }
+
         [HttpPost]
         [Route("Update")]
         [EnableCors("MyPolicy")]

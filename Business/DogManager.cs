@@ -1,7 +1,6 @@
 ﻿using DataExtensions;
 using Models;
 using Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,10 +19,12 @@ namespace Business
         {
             return _dogRepository.GetAllDogs().ToList();
         }
+
         public DogModel GetDogById(DogId dogId)
         {
             return _dogRepository.GetDogById(dogId);
         }
+
         public DogModel GetDefaultDog()
         {
             return _dogRepository.GetDefaultDog();

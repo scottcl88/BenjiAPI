@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Models.Shared
 {
@@ -9,9 +6,13 @@ namespace Models.Shared
     {
         public long Value { get; set; }
     }
+
     public partial class VaccineModel
     {
-        public VaccineModel() { }
+        public VaccineModel()
+        {
+        }
+
         public VaccineModel(VaccineModel clone)
         {
             VaccineId = clone?.VaccineId ?? new VaccineId();
@@ -27,6 +28,7 @@ namespace Models.Shared
             Modified = clone?.Modified ?? DateTime.UtcNow;
             Deleted = clone?.Deleted;
         }
+
         public VaccineId VaccineId { get; set; }
         public DogModel Dog { get; set; }
         public string Title { get; set; }

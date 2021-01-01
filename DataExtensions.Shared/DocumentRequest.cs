@@ -1,5 +1,4 @@
 ﻿using Models;
-using System;
 
 namespace DataExtensions
 {
@@ -9,16 +8,20 @@ namespace DataExtensions
         {
             Document = new DocumentModel();
         }
+
         public DocumentModel Document { get; set; }
     }
+
     public partial class DocumentUpdateRequest
     {
         public DocumentUpdateRequest()
         {
             Document = new DocumentModel();
         }
+
         public DocumentModel Document { get; set; }
     }
+
     public partial class DocumentDeleteRequest
     {
         public DocumentId DocumentId { get; set; }

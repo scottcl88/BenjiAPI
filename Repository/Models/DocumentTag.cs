@@ -11,5 +11,4 @@ namespace Repository.Models
         public virtual DateTime Modified { get; set; }
         public virtual DateTime? Deleted { get; set; }
     }
-
 }

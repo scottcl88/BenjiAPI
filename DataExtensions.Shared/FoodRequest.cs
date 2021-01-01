@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.Shared;
+﻿using Models.Shared;
 
 namespace DataExtensions
 {
@@ -9,6 +8,7 @@ namespace DataExtensions
         {
             Food = new FoodModel();
         }
+
         public FoodModel Food { get; set; }
     }
 
@@ -18,6 +18,7 @@ namespace DataExtensions
         {
             Food = new FoodModel();
         }
+
         public FoodModel Food { get; set; }
     }
 }

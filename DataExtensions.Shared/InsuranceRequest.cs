@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.Shared;
+﻿using Models.Shared;
 
 namespace DataExtensions
 {
@@ -9,6 +8,7 @@ namespace DataExtensions
         {
             Insurance = new InsuranceModel();
         }
+
         public InsuranceModel Insurance { get; set; }
     }
 
@@ -18,6 +18,7 @@ namespace DataExtensions
         {
             Insurance = new InsuranceModel();
         }
+
         public InsuranceModel Insurance { get; set; }
     }
 }

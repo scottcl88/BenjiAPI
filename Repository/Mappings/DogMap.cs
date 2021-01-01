@@ -1,6 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
 using Repository.Models;
-using NHibernate;
 
 namespace Repository.Mappings
 {
@@ -10,7 +9,7 @@ namespace Repository.Mappings
         {
             Table("Dog");
             Id(x => x.DogId).Not.Nullable();
-            Map(x => x.Name).Not.Nullable();            
+            Map(x => x.Name).Not.Nullable();
             Map(x => x.Gender).CustomType<Gender>().Not.Nullable();
             Map(x => x.Birthdate).Nullable();
             Map(x => x.AdoptedDate).Nullable();

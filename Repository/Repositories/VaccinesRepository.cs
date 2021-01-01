@@ -16,16 +16,14 @@ namespace Repository
             List<VaccineModel> models = new List<VaccineModel>();
             try
             {
-
                 using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
                 {
                     var model = session.Query<Vaccine>().Where(c => !c.Deleted.HasValue && c.Dog.DogId == dogId.Value);
                     models = model.Select(x => x.ToVaccineModel()).ToList(); //  Querying to get all the users
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
             }
             return models;
         }
@@ -95,6 +93,7 @@ namespace Repository
             }
             return true;
         }
+
         public bool DeleteVaccine(VaccineDeleteRequest request)
         {
             using (ISession session = NHibernateSession.OpenSession())

@@ -89,6 +89,7 @@ namespace Repository
             }
             return true;
         }
+
         public bool DeleteBoarding(BoardingDeleteRequest request)
         {
             using (ISession session = NHibernateSession.OpenSession())

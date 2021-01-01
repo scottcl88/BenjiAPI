@@ -2,7 +2,6 @@
 using Models;
 using Models.Shared;
 using Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,6 +20,7 @@ namespace Business
         {
             return _boardingRepository.GetAllBoardingForDog(dogModel.DogId).ToList();
         }
+
         public BoardingModel GetBoardingById(BoardingId boardingId)
         {
             return _boardingRepository.GetBoardingById(boardingId);
@@ -35,6 +35,7 @@ namespace Business
         {
             return _boardingRepository.UpdateBoarding(request.Boarding);
         }
+
         public bool DeleteBoarding(BoardingDeleteRequest request)
         {
             return _boardingRepository.DeleteBoarding(request);

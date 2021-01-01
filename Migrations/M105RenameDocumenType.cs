@@ -1,5 +1,4 @@
 ﻿using FluentMigrator;
-using System.Data.SqlTypes;
 
 namespace Migrations
 {
@@ -10,7 +9,7 @@ namespace Migrations
         {
             Execute.Sql("EXEC sp_rename 'Document.Type', 'ContentType', 'COLUMN';");
         }
-        
+
         public override void Down()
         {
             Execute.Sql("EXEC sp_rename 'Document.ContentType', 'Type', 'COLUMN';");

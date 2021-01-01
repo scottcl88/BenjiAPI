@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Models.Shared
 {
@@ -9,9 +6,13 @@ namespace Models.Shared
     {
         public long Value { get; set; }
     }
+
     public partial class BoardingModel
     {
-        public BoardingModel() { }
+        public BoardingModel()
+        {
+        }
+
         public BoardingModel(BoardingModel clone)
         {
             BoardingId = clone?.BoardingId ?? new BoardingId();
@@ -28,6 +29,7 @@ namespace Models.Shared
             Modified = clone?.Modified ?? DateTime.UtcNow;
             Deleted = clone?.Deleted;
         }
+
         public BoardingId BoardingId { get; set; }
         public DogModel Dog { get; set; }
         public DateTime? StartDateTime { get; set; }

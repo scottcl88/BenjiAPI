@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 
 namespace Models.Shared
 {
@@ -11,6 +8,7 @@ namespace Models.Shared
     {
         public long Value { get; set; }
     }
+
     public partial class IncidentModel
     {
         public IncidentId IncidentId { get; set; }
@@ -23,15 +21,19 @@ namespace Models.Shared
         public DateTime Modified { get; set; }
         public DateTime? Deleted { get; set; }
     }
+
     public enum IncidentType
     {
         Unknown = 0,
         Pee = 1,
         Poop = 2,
         Diarrhea = 3,
+
         [Display(Name = "Throw up")]
         ThrowUp = 4,
+
         Hurt = 5,
+
         [Display(Name = "Run Away")]
         RanAway = 6
     }
@@ -59,6 +61,7 @@ namespace Models.Shared
             }
             return displaynames;
         }
+
         public static Dictionary<string, int> GetDisplayDictonary(this Type enm)
         {
             var displaynames = new Dictionary<string, int>();

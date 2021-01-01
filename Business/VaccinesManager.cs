@@ -2,7 +2,6 @@
 using Models;
 using Models.Shared;
 using Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,6 +20,7 @@ namespace Business
         {
             return _vaccinesRepository.GetAllVaccineForDog(dogModel.DogId).ToList();
         }
+
         public VaccineModel GetVaccineById(VaccineId vaccinesId)
         {
             return _vaccinesRepository.GetVaccineById(vaccinesId);
@@ -35,6 +35,7 @@ namespace Business
         {
             return _vaccinesRepository.UpdateVaccine(request.Vaccine);
         }
+
         public bool DeleteVaccine(VaccineDeleteRequest request)
         {
             return _vaccinesRepository.DeleteVaccine(request);

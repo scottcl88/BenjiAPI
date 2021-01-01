@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Models.Shared
 {
@@ -9,17 +7,22 @@ namespace Models.Shared
     {
         public long Value { get; set; }
     }
+
     public partial class InsurancePolicyId
     {
         public string Value { get; set; }
     }
+
     public partial class InsuranceModel
     {
         public InsuranceId InsuranceId { get; set; }
+
         [Required]
         public DogModel Dog { get; set; }
+
         [Required]
         public InsurancePolicyId PolicyId { get; set; }
+
         public DateTime? StartDateTime { get; set; }
         public DateTime? EndDateTime { get; set; }
         public DateTime? RenewalDateTime { get; set; }

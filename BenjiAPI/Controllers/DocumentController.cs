@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Business;
+﻿using Business;
 using DataExtensions;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MimeTypes;
 using Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BenjiAPI
 {
@@ -26,7 +26,6 @@ namespace BenjiAPI
         private IWebHostEnvironment _hostingEnvironment;
         private readonly string[] permittedExtensions = new string[] { ".txt", ".pdf" };
         private readonly long _fileSizeLimit = 10000000;
-
 
         public DocumentController(ILogger<DocumentController> logger, DocumentManager documentManager, FolderManager folderManager, IWebHostEnvironment environment)
         {
@@ -43,6 +42,7 @@ namespace BenjiAPI
         {
             return _documentManager.GetAllDocuments();
         }
+
         [HttpGet]
         [Route("Get/{id}")]
         [EnableCors("MyPolicy")]
@@ -50,6 +50,7 @@ namespace BenjiAPI
         {
             return _documentManager.GetDocumentById(new DocumentId() { Value = id });
         }
+
         [HttpGet]
         [Route("Download/{documentId}")]
         [EnableCors("MyPolicy")]
@@ -67,6 +68,7 @@ namespace BenjiAPI
                 throw ex;
             }
         }
+
         [HttpPost]
         [Route("Add")]
         [EnableCors("MyPolicy")]
@@ -74,6 +76,7 @@ namespace BenjiAPI
         {
             return _documentManager.CreateNewDocument(request);
         }
+
         [HttpPost]
         [Route("Update")]
         [EnableCors("MyPolicy")]
@@ -90,7 +93,6 @@ namespace BenjiAPI
             }
             return result;
         }
-
 
         [HttpPost]
         [Route("upload/multiple/{folderId}")]

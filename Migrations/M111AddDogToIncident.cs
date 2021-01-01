@@ -1,5 +1,4 @@
 ﻿using FluentMigrator;
-using System.Data.SqlTypes;
 
 namespace Migrations
 {
@@ -11,7 +10,7 @@ namespace Migrations
             Alter.Table("Incident")
                 .AddColumn("DogId").AsInt64().ForeignKey("Dog", "DogId");
         }
-        
+
         public override void Down()
         {
             Delete.Column("DogId").FromTable("Incident");

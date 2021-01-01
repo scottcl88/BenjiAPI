@@ -1,5 +1,4 @@
 ﻿using Models;
-using System;
 
 namespace DataExtensions
 {
@@ -9,14 +8,17 @@ namespace DataExtensions
         {
             Folder = new FolderModel();
         }
+
         public FolderModel Folder { get; set; }
     }
+
     public partial class FolderUpdateRequest
     {
         public FolderUpdateRequest()
         {
             Folder = new FolderModel();
         }
+
         public FolderModel Folder { get; set; }
     }
 }

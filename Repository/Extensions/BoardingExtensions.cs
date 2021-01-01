@@ -1,7 +1,5 @@
-﻿using Models;
-using Models.Shared;
+﻿using Models.Shared;
 using Repository.Models;
-using System.Linq;
 
 namespace Repository
 {

@@ -80,6 +80,7 @@ namespace Repository
             }
             return true;
         }
+
         public bool DeleteIncident(IncidentDeleteRequest request)
         {
             using (ISession session = NHibernateSession.OpenSession())

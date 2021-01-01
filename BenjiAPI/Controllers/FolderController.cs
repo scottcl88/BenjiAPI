@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Business;
+﻿using Business;
 using DataExtensions;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models;
+using System.Collections.Generic;
 
 namespace BenjiAPI
 {
@@ -32,6 +28,7 @@ namespace BenjiAPI
         {
             return _folderManager.GetAllFolders();
         }
+
         [HttpGet]
         [Route("Get/{Id}")]
         [EnableCors("MyPolicy")]
@@ -39,12 +36,14 @@ namespace BenjiAPI
         {
             return _folderManager.GetFolderById(new FolderId() { Value = Id });
         }
+
         [HttpPost]
         [Route("Add")]
         public bool Add([FromBody] FolderCreateRequest request)
         {
             return _folderManager.CreateNewFolder(request);
         }
+
         [HttpPost]
         [Route("Update")]
         public bool Update([FromBody] FolderUpdateRequest request)

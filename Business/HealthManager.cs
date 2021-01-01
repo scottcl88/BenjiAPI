@@ -1,7 +1,6 @@
 ﻿using DataExtensions;
 using Models;
 using Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,6 +19,7 @@ namespace Business
         {
             return _healthRepository.GetAllHealthForDog(dogModel.DogId).ToList();
         }
+
         public HealthModel GetHealthById(HealthId healthId)
         {
             return _healthRepository.GetHealthById(healthId);

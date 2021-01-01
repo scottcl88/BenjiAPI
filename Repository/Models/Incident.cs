@@ -1,6 +1,4 @@
-﻿using NHibernate.Mapping;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace Repository.Models
 {

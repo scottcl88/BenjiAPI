@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.Shared;
+﻿using Models.Shared;
 
 namespace DataExtensions
 {
@@ -9,6 +8,7 @@ namespace DataExtensions
         {
             Incident = new IncidentModel();
         }
+
         public IncidentModel Incident { get; set; }
     }
 
@@ -18,8 +18,10 @@ namespace DataExtensions
         {
             Incident = new IncidentModel();
         }
+
         public IncidentModel Incident { get; set; }
     }
+
     public class IncidentDeleteRequest
     {
         public IncidentId IncidentId { get; set; }

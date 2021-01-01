@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.Shared;
+﻿using Models.Shared;
 
 namespace DataExtensions
 {
@@ -9,6 +8,7 @@ namespace DataExtensions
         {
             Vaccine = new VaccineModel();
         }
+
         public VaccineModel Vaccine { get; set; }
     }
 
@@ -18,8 +18,10 @@ namespace DataExtensions
         {
             Vaccine = new VaccineModel();
         }
+
         public VaccineModel Vaccine { get; set; }
     }
+
     public class VaccineDeleteRequest
     {
         public VaccineId VaccineId { get; set; }

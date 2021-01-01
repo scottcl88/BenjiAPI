@@ -19,13 +19,14 @@ namespace Repository
             }
             return folderModels;
         }
+
         public FolderModel GetFolderById(FolderId folderId)
         {
             FolderModel folderModel = new FolderModel();
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
                 var folder = session.Query<Folder>().FirstOrDefault(c => c.FolderId == folderId.Value);
-                if(folder != null)
+                if (folder != null)
                 {
                     folderModel = folder.ToFolderModel();
                 }

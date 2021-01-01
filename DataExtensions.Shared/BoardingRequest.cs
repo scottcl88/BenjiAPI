@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.Shared;
+﻿using Models.Shared;
 
 namespace DataExtensions
 {
@@ -9,6 +8,7 @@ namespace DataExtensions
         {
             Boarding = new BoardingModel();
         }
+
         public BoardingModel Boarding { get; set; }
     }
 
@@ -18,8 +18,10 @@ namespace DataExtensions
         {
             Boarding = new BoardingModel();
         }
+
         public BoardingModel Boarding { get; set; }
     }
+
     public class BoardingDeleteRequest
     {
         public BoardingId BoardingId { get; set; }

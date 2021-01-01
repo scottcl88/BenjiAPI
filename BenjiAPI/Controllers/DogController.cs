@@ -14,7 +14,7 @@ namespace BenjiAPI
     [EnableCors("MyPolicy")]
     public class DogController : ControllerBase
     {
-        private DogManager _dogManager;
+        private readonly DogManager _dogManager;
         private readonly ILogger<DogController> _logger;
 
         public DogController(ILogger<DogController> logger, DogManager dogManager)

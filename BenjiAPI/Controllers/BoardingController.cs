@@ -13,8 +13,8 @@ namespace BenjiAPI
     [EnableCors("MyPolicy")]
     public class BoardingController : ControllerBase
     {
-        private BoardingManager _boardingManager;
-        private DogManager _dogManager;
+        private readonly BoardingManager _boardingManager;
+        private readonly DogManager _dogManager;
         private readonly ILogger<BoardingController> _logger;
 
         public BoardingController(ILogger<BoardingController> logger, BoardingManager boardingManager, DogManager dogManager)

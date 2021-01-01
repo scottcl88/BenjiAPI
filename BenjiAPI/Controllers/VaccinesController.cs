@@ -13,8 +13,8 @@ namespace BenjiAPI
     [EnableCors("MyPolicy")]
     public class VaccineController : ControllerBase
     {
-        private VaccineManager _vaccineManager;
-        private DogManager _dogManager;
+        private readonly VaccineManager _vaccineManager;
+        private readonly DogManager _dogManager;
         private readonly ILogger<VaccineController> _logger;
 
         public VaccineController(ILogger<VaccineController> logger, VaccineManager vaccineManager, DogManager dogManager)

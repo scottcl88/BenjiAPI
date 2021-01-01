@@ -13,8 +13,8 @@ namespace BenjiAPI
     [EnableCors("MyPolicy")]
     public class InsuranceController : ControllerBase
     {
-        private InsuranceManager _insuranceManager;
-        private DogManager _dogManager;
+        private readonly InsuranceManager _insuranceManager;
+        private readonly DogManager _dogManager;
         private readonly ILogger<InsuranceController> _logger;
 
         public InsuranceController(ILogger<InsuranceController> logger, InsuranceManager insuranceManager, DogManager dogManager)

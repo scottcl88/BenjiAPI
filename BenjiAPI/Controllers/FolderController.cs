@@ -13,7 +13,7 @@ namespace BenjiAPI
     [EnableCors("MyPolicy")]
     public class FolderController : ControllerBase
     {
-        private FolderManager _folderManager;
+        private readonly FolderManager _folderManager;
         private readonly ILogger<FolderController> _logger;
 
         public FolderController(ILogger<FolderController> logger, FolderManager folderManager)

@@ -20,10 +20,10 @@ namespace BenjiAPI
     [EnableCors("MyPolicy")]
     public class DocumentController : ControllerBase
     {
-        private DocumentManager _documentManager;
-        private FolderManager _folderManager;
+        private readonly DocumentManager _documentManager;
+        private readonly FolderManager _folderManager;
         private readonly ILogger<DocumentController> _logger;
-        private IWebHostEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly string[] permittedExtensions = new string[] { ".txt", ".pdf" };
         private readonly long _fileSizeLimit = 10000000;
 
@@ -56,17 +56,10 @@ namespace BenjiAPI
         [EnableCors("MyPolicy")]
         public FileResult Download(long documentId)
         {
-            try
-            {
-                var doc = _documentManager.GetDocumentById(new DocumentId() { Value = documentId });
-                string filePath = GetFilePath(doc.DocumentKey, doc.Folder.Name, doc.ContentType, doc.Created);
-                byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
-                return File(fileBytes, doc.ContentType, doc.FileName);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            var doc = _documentManager.GetDocumentById(new DocumentId() { Value = documentId });
+            string filePath = GetFilePath(doc.DocumentKey, doc.Folder.Name, doc.ContentType, doc.Created);
+            byte[] fileBytes = System.IO.File.ReadAllBytes(filePath);
+            return File(fileBytes, doc.ContentType, doc.FileName);
         }
 
         [HttpPost]

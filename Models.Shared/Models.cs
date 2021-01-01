@@ -21,7 +21,7 @@ namespace Models
             Name = clone?.Name;
             AdoptedDate = clone?.AdoptedDate;
             Birthdate = clone?.Birthdate;
-            Gender = clone.Gender;
+            Gender = clone?.Gender ?? Gender.Unknown;
             Created = clone?.Created ?? DateTime.UtcNow;
             Modified = clone?.Modified ?? DateTime.UtcNow;
             Deleted = clone?.Deleted;

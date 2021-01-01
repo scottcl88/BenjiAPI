@@ -13,8 +13,8 @@ namespace BenjiAPI
     [EnableCors("MyPolicy")]
     public class HealthController : ControllerBase
     {
-        private HealthManager _healthManager;
-        private DogManager _dogManager;
+        private readonly HealthManager _healthManager;
+        private readonly DogManager _dogManager;
         private readonly ILogger<HealthController> _logger;
 
         public HealthController(ILogger<HealthController> logger, HealthManager healthManager, DogManager dogManager)

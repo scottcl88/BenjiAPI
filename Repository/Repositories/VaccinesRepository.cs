@@ -13,17 +13,11 @@ namespace Repository
     {
         public List<VaccineModel> GetAllVaccineForDog(DogId dogId)
         {
-            List<VaccineModel> models = new List<VaccineModel>();
-            try
+            List<VaccineModel> models;
+            using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
-                using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
-                {
-                    var model = session.Query<Vaccine>().Where(c => !c.Deleted.HasValue && c.Dog.DogId == dogId.Value);
-                    models = model.Select(x => x.ToVaccineModel()).ToList(); //  Querying to get all the users
-                }
-            }
-            catch (Exception ex)
-            {
+                var model = session.Query<Vaccine>().Where(c => !c.Deleted.HasValue && c.Dog.DogId == dogId.Value);
+                models = model.Select(x => x.ToVaccineModel()).ToList(); //  Querying to get all the users
             }
             return models;
         }

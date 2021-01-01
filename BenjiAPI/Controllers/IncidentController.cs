@@ -13,8 +13,8 @@ namespace BenjiAPI
     [EnableCors("MyPolicy")]
     public class IncidentController : ControllerBase
     {
-        private IncidentManager _incidentManager;
-        private DogManager _dogManager;
+        private readonly IncidentManager _incidentManager;
+        private readonly DogManager _dogManager;
         private readonly ILogger<IncidentController> _logger;
 
         public IncidentController(ILogger<IncidentController> logger, IncidentManager incidentManager, DogManager dogManager)

@@ -13,8 +13,8 @@ namespace BenjiAPI
     [EnableCors("MyPolicy")]
     public class FoodController : ControllerBase
     {
-        private FoodManager _foodManager;
-        private DogManager _dogManager;
+        private readonly FoodManager _foodManager;
+        private readonly DogManager _dogManager;
         private readonly ILogger<FoodController> _logger;
 
         public FoodController(ILogger<FoodController> logger, FoodManager foodManager, DogManager dogManager)

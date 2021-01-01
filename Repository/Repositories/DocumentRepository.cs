@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using Models.Shared;
 using NHibernate;
 using Repository.Models;
 using System;
@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace Repository
 {
-    public class DocumentRepository : IRepository
+    public class DocumentRepository
     {
         public List<DocumentModel> GetAllDocuments()
         {
-            List<DocumentModel> documentModels = new List<DocumentModel>();
+            List<DocumentModel> documentModels;
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
                 var documents = session.Query<Document>().Where(c => !c.Deleted.HasValue);

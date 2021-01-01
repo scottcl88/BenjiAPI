@@ -1,5 +1,4 @@
 ﻿using DataExtensions;
-using Models;
 using Models.Shared;
 using NHibernate;
 using Repository.Models;
@@ -9,7 +8,7 @@ using System.Linq;
 
 namespace Repository
 {
-    public class VaccineRepository : IRepository
+    public class VaccineRepository
     {
         public List<VaccineModel> GetAllVaccineForDog(DogId dogId)
         {

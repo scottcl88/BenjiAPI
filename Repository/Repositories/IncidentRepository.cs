@@ -1,5 +1,4 @@
 ﻿using DataExtensions;
-using Models;
 using Models.Shared;
 using NHibernate;
 using Repository.Models;
@@ -9,11 +8,11 @@ using System.Linq;
 
 namespace Repository
 {
-    public class IncidentRepository : IRepository
+    public class IncidentRepository
     {
         public List<IncidentModel> GetAllIncidentForDog(DogId dogId)
         {
-            List<IncidentModel> incidentModels = new List<IncidentModel>();
+            List<IncidentModel> incidentModels;
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
                 var incident = session.Query<Incident>().Where(c => !c.Deleted.HasValue && c.Dog.DogId == dogId.Value);

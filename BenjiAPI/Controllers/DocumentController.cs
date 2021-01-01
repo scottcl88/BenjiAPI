@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MimeTypes;
-using Models;
+using Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.IO;

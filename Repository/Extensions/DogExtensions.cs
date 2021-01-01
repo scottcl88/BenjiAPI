@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using Models.Shared;
 using Repository.Models;
 
 namespace Repository
@@ -13,7 +13,7 @@ namespace Repository
                 Name = dbDog.Name,
                 Birthdate = dbDog.Birthdate,
                 AdoptedDate = dbDog.AdoptedDate,
-                Gender = (global::Models.Gender)dbDog.Gender,
+                Gender = (global::Models.Shared.Gender)dbDog.Gender,
                 Created = dbDog.Created,
                 Modified = dbDog.Modified,
                 Deleted = dbDog.Deleted

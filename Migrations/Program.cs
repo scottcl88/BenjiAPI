@@ -6,6 +6,10 @@ namespace Migrations
 {
     internal class Program
     {
+        protected Program()
+        {
+        }
+
         private static void Main(string[] args)
         {
             var serviceProvider = CreateServices();

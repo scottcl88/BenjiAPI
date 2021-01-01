@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using Models.Shared;
 using Repository.Models;
 using System.Linq;
 

@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using Models.Shared;
 using NHibernate;
 using Repository.Models;
 using System;
@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace Repository
 {
-    public class HealthRepository : IRepository
+    public class HealthRepository
     {
         public List<HealthModel> GetAllHealthForDog(DogId dogId)
         {
-            List<HealthModel> healthModels = new List<HealthModel>();
+            List<HealthModel> healthModels;
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
                 var health = session.Query<Health>().Where(c => !c.Deleted.HasValue && c.Dog.DogId == dogId.Value);

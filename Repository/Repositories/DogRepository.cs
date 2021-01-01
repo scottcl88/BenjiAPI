@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using Models.Shared;
 using NHibernate;
 using Repository.Models;
 using System;
@@ -8,11 +8,11 @@ using Gender = Repository.Models.Gender;
 
 namespace Repository
 {
-    public class DogRepository : IRepository
+    public class DogRepository
     {
         public List<DogModel> GetAllDogs()
         {
-            List<DogModel> dogModels = new List<DogModel>();
+            List<DogModel> dogModels;
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
                 var dogs = session.Query<Dog>().Where(c => !c.Deleted.HasValue);
@@ -62,10 +62,6 @@ namespace Repository
             };
             using (ISession session = NHibernateSession.OpenSession())
             {
-                //User foundUser = session.Query<User>().FirstOrDefault(u => u.HashedLoginToken == hashedLoginToken);
-                //if (foundUser == null) return false;
-                //newDog.User = foundUser;
-                //newCar.UserId = foundUser.UserId;
                 using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
                 {
                     session.Save(newDog); //  Save the user in session

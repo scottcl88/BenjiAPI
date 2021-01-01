@@ -1,5 +1,4 @@
 ﻿using DataExtensions;
-using Models;
 using Models.Shared;
 using NHibernate;
 using Repository.Models;
@@ -9,11 +8,11 @@ using System.Linq;
 
 namespace Repository
 {
-    public class BoardingRepository : IRepository
+    public class BoardingRepository
     {
         public List<BoardingModel> GetAllBoardingForDog(DogId dogId)
         {
-            List<BoardingModel> models = new List<BoardingModel>();
+            List<BoardingModel> models;
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
                 var model = session.Query<Boarding>().Where(c => !c.Deleted.HasValue && c.Dog.DogId == dogId.Value);

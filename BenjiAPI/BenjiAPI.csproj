@@ -3,7 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>3d220e33-75d4-417c-b28f-8de55330bc23</UserSecretsId>
+    <CodeAnalysisRuleSet>..\.sonarlint\benjiapicsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\.sonarlint\benjiapi\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediaTypeMap.Core" Version="2.3.3" />

@@ -1,5 +1,4 @@
-﻿using Models;
-using Models.Shared;
+﻿using Models.Shared;
 using NHibernate;
 using Repository.Models;
 using System;
@@ -8,11 +7,11 @@ using System.Linq;
 
 namespace Repository
 {
-    public class InsuranceRepository : IRepository
+    public class InsuranceRepository
     {
         public List<InsuranceModel> GetAllInsuranceForDog(DogId dogId)
         {
-            List<InsuranceModel> foodModels = new List<InsuranceModel>();
+            List<InsuranceModel> foodModels;
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
                 var food = session.Query<Insurance>().Where(c => !c.Deleted.HasValue && c.Dog.DogId == dogId.Value);

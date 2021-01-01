@@ -11,6 +11,10 @@ namespace Repository
 {
     public class NHibernateSession
     {
+        protected NHibernateSession()
+        {
+        }
+
         public static ISession OpenSession()
         {
             var configuration = new Configuration();

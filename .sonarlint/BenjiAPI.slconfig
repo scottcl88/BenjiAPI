@@ -1,0 +1,12 @@
+{
+  "ServerUri": "http://localhost:9000/",
+  "Organization": null,
+  "ProjectKey": "BenjiAPI",
+  "ProjectName": "BenjiAPI",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AXa9ujxz8B3hakcl-VPg",
+      "ProfileTimestamp": "2021-01-01T11:34:27Z"
+    }
+  }
+}

@@ -19,7 +19,6 @@ namespace Repository.Mappings
             Map(x => x.Created).Not.Nullable();
             Map(x => x.Modified).Not.Nullable();
             Map(x => x.Deleted).Nullable();
-            //HasMany<DocumentTag>(x => x.Tags);
         }
     }
 }

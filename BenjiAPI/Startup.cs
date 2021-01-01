@@ -26,7 +26,6 @@ namespace BenjiAPI
                        .AllowAnyHeader();
             }));
 
-            //services.AddCors();
             services.AddControllers();
             services.AddScoped<DogManager>();
             services.AddScoped<DocumentManager>();
@@ -36,7 +35,6 @@ namespace BenjiAPI
             services.AddScoped<BoardingManager>();
             services.AddScoped<FoodManager>();
             services.AddScoped<VaccineManager>();
-            //services.AddCors(c => c.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,12 +59,6 @@ namespace BenjiAPI
             {
                 endpoints.MapControllers();
             });
-            //app.UseCors(policy =>
-            //    policy.AllowAnyOrigin()
-            //    //policy.WithOrigins("http://localhost:64360/", "http://localhost:59006/")
-            //    .AllowAnyMethod());
-            //    //.WithHeaders(HeaderNames.ContentType, HeaderNames.Authorization, "x-custom-header")
-            //    //.AllowCredentials());
         }
     }
 }

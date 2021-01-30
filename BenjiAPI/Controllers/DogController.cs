@@ -36,7 +36,17 @@ namespace BenjiAPI
         [EnableCors("MyPolicy")]
         public DogModel Get()
         {
-            return _dogManager.GetDefaultDog();
+            try
+            {
+                return _dogManager.GetDefaultDog();
+            }
+            catch (Exception ex)
+            {
+                return new DogModel()
+                {
+                    Name = ex.Message
+                };
+            }
         }
 
         [HttpGet]

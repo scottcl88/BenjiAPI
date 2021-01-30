@@ -57,6 +57,9 @@ namespace Repository
                 AdoptedDate = dogModel.AdoptedDate,
                 Birthdate = dogModel.Birthdate,
                 Gender = (Gender)dogModel.Gender,
+                MicrochipNumber = dogModel.MicrochipNumber,
+                RabiesTagNumber = dogModel.RabiesTagNumber,
+                Fixed = dogModel.Fixed,
                 Created = DateTime.UtcNow,
                 Modified = DateTime.UtcNow
             };
@@ -81,6 +84,9 @@ namespace Repository
                 foundDog.AdoptedDate = dogModel.AdoptedDate;
                 foundDog.Birthdate = dogModel.Birthdate;
                 foundDog.Gender = (Models.Gender)dogModel.Gender;
+                foundDog.MicrochipNumber = dogModel.MicrochipNumber;
+                foundDog.RabiesTagNumber = dogModel.RabiesTagNumber;
+                foundDog.Fixed = dogModel.Fixed;
                 foundDog.Modified = DateTime.UtcNow;
                 using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
                 {

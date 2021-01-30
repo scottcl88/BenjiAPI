@@ -28,6 +28,9 @@ namespace Models.Shared
             AdoptedDate = clone?.AdoptedDate;
             Birthdate = clone?.Birthdate;
             Gender = clone?.Gender ?? Gender.Unknown;
+            MicrochipNumber = clone?.MicrochipNumber;
+            RabiesTagNumber = clone?.RabiesTagNumber;
+            Fixed = clone?.Fixed ?? false;
             Created = clone?.Created ?? DateTime.UtcNow;
             Modified = clone?.Modified ?? DateTime.UtcNow;
             Deleted = clone?.Deleted;
@@ -41,6 +44,9 @@ namespace Models.Shared
 
         [Required]
         public Gender Gender { get; set; }
+        public string MicrochipNumber { get; set; }
+        public string RabiesTagNumber { get; set; }
+        public bool Fixed { get; set; }
 
         public DateTime? AdoptedDate { get; set; }
         public DateTime? Birthdate { get; set; }

@@ -14,6 +14,9 @@ namespace Repository
                 Birthdate = dbDog.Birthdate,
                 AdoptedDate = dbDog.AdoptedDate,
                 Gender = (global::Models.Shared.Gender)dbDog.Gender,
+                MicrochipNumber = dbDog.MicrochipNumber,
+                RabiesTagNumber = dbDog.RabiesTagNumber,
+                Fixed = dbDog.Fixed,
                 Created = dbDog.Created,
                 Modified = dbDog.Modified,
                 Deleted = dbDog.Deleted

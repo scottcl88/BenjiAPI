@@ -15,6 +15,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Models.Shared", "Models.Sha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{A0A22CF7-C1E6-4878-9ADE-277E4F4B1E03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenjiTests", "BenjiTests\BenjiTests.csproj", "{04616304-99D8-4E29-A64A-E7EAD887FB90}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Models.Shared\Models.Shared.projitems*{4a89f29b-1115-4c93-b9a4-532d1851cfa7}*SharedItemsImports = 13
@@ -43,6 +45,10 @@ Global
 		{A0A22CF7-C1E6-4878-9ADE-277E4F4B1E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0A22CF7-C1E6-4878-9ADE-277E4F4B1E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0A22CF7-C1E6-4878-9ADE-277E4F4B1E03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04616304-99D8-4E29-A64A-E7EAD887FB90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04616304-99D8-4E29-A64A-E7EAD887FB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04616304-99D8-4E29-A64A-E7EAD887FB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04616304-99D8-4E29-A64A-E7EAD887FB90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,4 +21,8 @@ namespace DataExtensions
 
         public InsuranceModel Insurance { get; set; }
     }
+    public class InsuranceDeleteRequest
+    {
+        public InsuranceId InsuranceId { get; set; }
+    }
 }

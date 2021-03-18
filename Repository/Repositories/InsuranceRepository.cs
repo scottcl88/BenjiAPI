@@ -1,4 +1,5 @@
-﻿using Models.Shared;
+﻿using DataExtensions;
+using Models.Shared;
 using NHibernate;
 using Repository.Models;
 using System;
@@ -11,39 +12,51 @@ namespace Repository
     {
         public List<InsuranceModel> GetAllInsuranceForDog(DogId dogId)
         {
-            List<InsuranceModel> foodModels;
+            List<InsuranceModel> models;
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
-                var food = session.Query<Insurance>().Where(c => !c.Deleted.HasValue && c.Dog.DogId == dogId.Value);
-                foodModels = food.Select(x => x.ToInsuranceModel()).ToList(); //  Querying to get all the users
+                var model = session.Query<Insurance>().Where(c => !c.Deleted.HasValue && c.Dog.DogId == dogId.Value);
+                models = model.Select(x => x.ToInsuranceModel()).ToList(); //  Querying to get all the users
             }
-            return foodModels;
+            return models;
         }
 
-        public InsuranceModel GetInsuranceById(InsuranceId foodId)
+        public InsuranceModel GetInsuranceById(InsuranceId InsuranceId)
         {
-            InsuranceModel foodModel = new InsuranceModel();
+            InsuranceModel model = new InsuranceModel();
             using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
             {
-                var food = session.Query<Insurance>().FirstOrDefault(c => c.InsuranceId == foodId.Value);
-                if (food != null)
+                var dbItem = session.Query<Insurance>().FirstOrDefault(c => c.InsuranceId == InsuranceId.Value);
+                if (dbItem != null)
                 {
-                    foodModel = food.ToInsuranceModel();
+                    model = dbItem.ToInsuranceModel();
                 }
             }
-            return foodModel;
+            return model;
         }
 
-        public bool CreateInsurance(InsuranceModel foodModel)
+        public bool CreateInsurance(InsuranceModel model)
         {
             Insurance newInsurance = new Insurance
             {
-                Created = foodModel.Created,
-                Modified = foodModel.Modified
+                AnnualCoverageLimit = model.AnnualCoverageLimit,
+                DeductibleAmount = model.DeductibleAmount,
+                EndDateTime = model.EndDateTime,
+                PaymentAmount = model.PaymentAmount,
+                PaymentFrequency = model.PaymentFrequency,
+                Company = model.Company,
+                PolicyId = model.PolicyId?.Value,
+                ReimbursementPercentage = model.ReimbursementPercentage,
+                RenewalDateTime = model.RenewalDateTime,
+                StartDateTime = model.StartDateTime,
+                Website = model.Website,
+                Created = model.Created,
+                Modified = model.Modified,
+                Deleted = model.Deleted
             };
             using (ISession session = NHibernateSession.OpenSession())
             {
-                Dog foundDog = session.Query<Dog>().FirstOrDefault(u => u.DogId == foodModel.Dog.DogId.Value);
+                Dog foundDog = session.Query<Dog>().FirstOrDefault(u => u.DogId == model.Dog.DogId.Value);
                 if (foundDog == null) return false;
                 newInsurance.Dog = foundDog;
                 using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
@@ -55,13 +68,41 @@ namespace Repository
             return true;
         }
 
-        public bool UpdateInsurance(InsuranceModel foodModel)
+        public bool UpdateInsurance(InsuranceModel model)
         {
             using (ISession session = NHibernateSession.OpenSession())
             {
-                Insurance foundInsurance = session.Query<Insurance>().FirstOrDefault(c => c.InsuranceId == foodModel.InsuranceId.Value);
+                Insurance foundInsurance = session.Query<Insurance>().FirstOrDefault(c => c.InsuranceId == model.InsuranceId.Value);
                 if (foundInsurance == null) return false;
                 foundInsurance.Modified = DateTime.UtcNow;
+
+                foundInsurance.AnnualCoverageLimit = model.AnnualCoverageLimit;
+                foundInsurance.DeductibleAmount = model.DeductibleAmount;
+                foundInsurance.EndDateTime = model.EndDateTime;
+                foundInsurance.PaymentAmount = model.PaymentAmount;
+                foundInsurance.PaymentFrequency = model.PaymentFrequency;
+                foundInsurance.Company = model.Company;
+                foundInsurance.PolicyId = model.PolicyId?.Value;
+                foundInsurance.ReimbursementPercentage = model.ReimbursementPercentage;
+                foundInsurance.RenewalDateTime = model.RenewalDateTime;
+                foundInsurance.StartDateTime = model.StartDateTime;
+                foundInsurance.Website = model.Website;
+                using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
+                {
+                    session.Update(foundInsurance); //  Save the user in session
+                    transaction.Commit();   //  Commit the changes to the database
+                }
+            }
+            return true;
+        }
+
+        public bool DeleteInsurance(InsuranceDeleteRequest request)
+        {
+            using (ISession session = NHibernateSession.OpenSession())
+            {
+                Insurance foundInsurance = session.Query<Insurance>().FirstOrDefault(c => c.InsuranceId == request.InsuranceId.Value);
+                if (foundInsurance == null) return false;
+                foundInsurance.Deleted = DateTime.UtcNow;
                 using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
                 {
                     session.Update(foundInsurance); //  Save the user in session

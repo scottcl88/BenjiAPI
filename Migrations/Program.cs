@@ -51,7 +51,6 @@ namespace Migrations
         {
             // Instantiate the runner
             var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
-            bool canRunUp = runner.HasMigrationsToApplyUp();
             // Execute the migrations
             runner.MigrateUp();
             Console.WriteLine();

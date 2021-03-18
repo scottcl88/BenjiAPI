@@ -37,6 +37,7 @@ namespace BenjiAPI
             services.AddScoped<BoardingManager>();
             services.AddScoped<FoodManager>();
             services.AddScoped<VaccineManager>();
+            services.AddScoped<VetVisitManager>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

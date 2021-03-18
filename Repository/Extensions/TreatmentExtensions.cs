@@ -15,7 +15,7 @@ namespace Repository
                 ReceivedDateTime = dbTreatment.ReceivedDateTime,
                 Doctor = dbTreatment.Doctor,
                 Amount = dbTreatment.Amount,
-                Duration = dbTreatment.Duration,
+                ExpirationDateTime = dbTreatment.ExpirationDateTime,
                 Dog = dbTreatment.Dog.ToDogModel(),
                 Created = dbTreatment.Created,
                 Modified = dbTreatment.Modified,

@@ -21,7 +21,7 @@ namespace Models.Shared
             ReceivedDateTime = clone?.ReceivedDateTime;
             Doctor = clone?.Doctor;
             Amount = clone?.Amount;
-            Duration = clone?.Duration;
+            ExpirationDateTime = clone?.ExpirationDateTime;
             Comments = clone?.Comments;
             Created = clone?.Created ?? DateTime.UtcNow;
             Modified = clone?.Modified ?? DateTime.UtcNow;
@@ -34,7 +34,7 @@ namespace Models.Shared
         public DateTime? ReceivedDateTime { get; set; }
         public string Doctor { get; set; }
         public string Amount { get; set; }
-        public TimeSpan? Duration { get; set; }
+        public DateTime? ExpirationDateTime { get; set; }
         public string Comments { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }

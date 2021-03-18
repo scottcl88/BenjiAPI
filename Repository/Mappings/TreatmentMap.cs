@@ -14,7 +14,7 @@ namespace Repository.Mappings
             Map(x => x.ReceivedDateTime);
             Map(x => x.Doctor);
             Map(x => x.Amount);
-            Map(x => x.Duration);
+            Map(x => x.ExpirationDateTime);
             Map(x => x.Created).Not.Nullable();
             Map(x => x.Modified).Not.Nullable();
             Map(x => x.Deleted);

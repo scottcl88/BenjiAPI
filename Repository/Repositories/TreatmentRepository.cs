@@ -44,7 +44,7 @@ namespace Repository
                 ReceivedDateTime = model.ReceivedDateTime,
                 Doctor = model.Doctor,
                 Amount = model.Amount,
-                Duration = model.Duration,
+                ExpirationDateTime = model.ExpirationDateTime,
                 Created = model.Created,
                 Modified = model.Modified,
                 Deleted = model.Deleted
@@ -75,7 +75,7 @@ namespace Repository
                 foundTreatment.ReceivedDateTime = model.ReceivedDateTime;
                 foundTreatment.Doctor = model.Doctor;
                 foundTreatment.Amount = model.Amount;
-                foundTreatment.Duration = model.Duration;
+                foundTreatment.ExpirationDateTime = model.ExpirationDateTime;
                 using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
                 {
                     session.Update(foundTreatment); //  Save the user in session

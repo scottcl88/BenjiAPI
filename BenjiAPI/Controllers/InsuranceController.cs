@@ -56,5 +56,13 @@ namespace BenjiAPI
         {
             return _insuranceManager.UpdateInsurance(request);
         }
+
+        [HttpPost]
+        [Route("Delete")]
+        [EnableCors("MyPolicy")]
+        public bool Delete([FromBody] InsuranceDeleteRequest request)
+        {
+            return _insuranceManager.DeleteInsurance(request);
+        }
     }
 }

@@ -34,5 +34,9 @@ namespace Business
         {
             return _insuranceRepository.UpdateInsurance(request.Insurance);
         }
+        public bool DeleteInsurance(InsuranceDeleteRequest request)
+        {
+            return _insuranceRepository.DeleteInsurance(request);
+        }
     }
 }

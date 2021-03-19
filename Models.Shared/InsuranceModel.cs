@@ -14,14 +14,13 @@ namespace Models.Shared
     }
 
     public partial class InsuranceModel
-    {
+    {        
         public InsuranceId InsuranceId { get; set; }
 
-        [Required]
         public DogModel Dog { get; set; }
 
         [Required]
-        public InsurancePolicyId PolicyId { get; set; }
+        public InsurancePolicyId PolicyId { get; set; } = new InsurancePolicyId();
 
         public DateTime? StartDateTime { get; set; }
         public DateTime? EndDateTime { get; set; }

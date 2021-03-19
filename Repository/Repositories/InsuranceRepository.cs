@@ -70,28 +70,35 @@ namespace Repository
 
         public bool UpdateInsurance(InsuranceModel model)
         {
-            using (ISession session = NHibernateSession.OpenSession())
+            try
             {
-                Insurance foundInsurance = session.Query<Insurance>().FirstOrDefault(c => c.InsuranceId == model.InsuranceId.Value);
-                if (foundInsurance == null) return false;
-                foundInsurance.Modified = DateTime.UtcNow;
-
-                foundInsurance.AnnualCoverageLimit = model.AnnualCoverageLimit;
-                foundInsurance.DeductibleAmount = model.DeductibleAmount;
-                foundInsurance.EndDateTime = model.EndDateTime;
-                foundInsurance.PaymentAmount = model.PaymentAmount;
-                foundInsurance.PaymentFrequency = model.PaymentFrequency;
-                foundInsurance.Company = model.Company;
-                foundInsurance.PolicyId = model.PolicyId?.Value;
-                foundInsurance.ReimbursementPercentage = model.ReimbursementPercentage;
-                foundInsurance.RenewalDateTime = model.RenewalDateTime;
-                foundInsurance.StartDateTime = model.StartDateTime;
-                foundInsurance.Website = model.Website;
-                using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
+                using (ISession session = NHibernateSession.OpenSession())
                 {
-                    session.Update(foundInsurance); //  Save the user in session
-                    transaction.Commit();   //  Commit the changes to the database
+                    Insurance foundInsurance = session.Query<Insurance>().FirstOrDefault(c => c.InsuranceId == model.InsuranceId.Value);
+                    if (foundInsurance == null) return false;
+                    foundInsurance.Modified = DateTime.UtcNow;
+
+                    foundInsurance.AnnualCoverageLimit = model.AnnualCoverageLimit;
+                    foundInsurance.DeductibleAmount = model.DeductibleAmount;
+                    foundInsurance.EndDateTime = model.EndDateTime;
+                    foundInsurance.PaymentAmount = model.PaymentAmount;
+                    foundInsurance.PaymentFrequency = model.PaymentFrequency;
+                    foundInsurance.Company = model.Company;
+                    foundInsurance.PolicyId = model.PolicyId?.Value;
+                    foundInsurance.ReimbursementPercentage = model.ReimbursementPercentage;
+                    foundInsurance.RenewalDateTime = model.RenewalDateTime;
+                    foundInsurance.StartDateTime = model.StartDateTime;
+                    foundInsurance.Website = model.Website;
+                    using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
+                    {
+                        session.Update(foundInsurance); //  Save the user in session
+                        transaction.Commit();   //  Commit the changes to the database
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+
             }
             return true;
         }

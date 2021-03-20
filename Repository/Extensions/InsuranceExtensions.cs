@@ -15,7 +15,7 @@ namespace Repository
                 DeductibleAmount = dbInsurance.DeductibleAmount,
                 EndDateTime = dbInsurance.EndDateTime,
                 PaymentAmount = dbInsurance.PaymentAmount,
-                PaymentFrequency = dbInsurance.PaymentFrequency,
+                PaymentFrequencyDays = dbInsurance.PaymentFrequency?.Days ?? 0,
                 Company = dbInsurance.Company,
                 PolicyId = new InsurancePolicyId() { Value = dbInsurance.PolicyId },
                 ReimbursementPercentage = dbInsurance.ReimbursementPercentage,

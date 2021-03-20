@@ -26,7 +26,7 @@ namespace Models.Shared
         public DateTime? EndDateTime { get; set; }
         public DateTime? RenewalDateTime { get; set; }
         public decimal? PaymentAmount { get; set; }
-        public TimeSpan? PaymentFrequency { get; set; }
+        public int? PaymentFrequencyDays { get; set; }
         public decimal? DeductibleAmount { get; set; }
         public decimal? AnnualCoverageLimit { get; set; }
         public bool UnlimitedAnnualCoverageLimit { get; set; }

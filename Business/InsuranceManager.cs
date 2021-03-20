@@ -20,6 +20,10 @@ namespace Business
             return _insuranceRepository.GetAllInsuranceForDog(dogModel.DogId).ToList();
         }
 
+        public InsuranceModel GetDefaultInsurance()
+        {
+            return _insuranceRepository.GetDefaultInsurance();
+        }
         public InsuranceModel GetInsuranceById(InsuranceId insuranceId)
         {
             return _insuranceRepository.GetInsuranceById(insuranceId);

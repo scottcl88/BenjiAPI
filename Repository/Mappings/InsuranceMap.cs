@@ -1,5 +1,6 @@
 ﻿using FluentNHibernate.Mapping;
 using Repository.Models;
+using System;
 
 namespace Repository.Mappings
 {
@@ -15,7 +16,7 @@ namespace Repository.Mappings
             Map(x => x.DeductibleAmount);
             Map(x => x.EndDateTime);
             Map(x => x.PaymentAmount);
-            //Map(x => x.PaymentFrequency).Nullable().CustomType("TimeAsTimeSpan");
+            Map(x => x.PaymentFrequency).Nullable().CustomType<TimeSpan>();
             Map(x => x.Company);
             Map(x => x.ReimbursementPercentage);
             Map(x => x.RenewalDateTime);

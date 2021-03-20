@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Models.Shared;
+using System;
 using System.Collections.Generic;
 
 namespace BenjiAPI
@@ -31,6 +32,24 @@ namespace BenjiAPI
         {
             var defaultDog = _dogManager.GetDefaultDog();
             return _insuranceManager.GetAllInsurance(defaultDog);
+        }
+
+        [HttpGet]
+        [Route("Get")]
+        [EnableCors("MyPolicy")]
+        public InsuranceModel Get()
+        {
+            try
+            {
+                return _insuranceManager.GetDefaultInsurance();
+            }
+            catch (Exception ex)
+            {
+                return new InsuranceModel()
+                {
+                    Company = ex.Message
+                };
+            }
         }
 
         [HttpGet]

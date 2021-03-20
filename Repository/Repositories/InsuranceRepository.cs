@@ -21,6 +21,19 @@ namespace Repository
             return models;
         }
 
+        public InsuranceModel GetDefaultInsurance()
+        {
+            InsuranceModel insuranceModel = new InsuranceModel();
+            using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
+            {
+                var insurance = session.Query<Insurance>().FirstOrDefault(c => !c.Deleted.HasValue);
+                if (insurance != null)
+                {
+                    insuranceModel = insurance.ToInsuranceModel();
+                }
+            }
+            return insuranceModel;
+        }
         public InsuranceModel GetInsuranceById(InsuranceId InsuranceId)
         {
             InsuranceModel model = new InsuranceModel();
@@ -44,7 +57,6 @@ namespace Repository
                 DeductibleAmount = model.DeductibleAmount,
                 EndDateTime = model.EndDateTime,
                 PaymentAmount = model.PaymentAmount,
-                PaymentFrequency = model.PaymentFrequency,
                 Company = model.Company,
                 PolicyId = model.PolicyId?.Value,
                 ReimbursementPercentage = model.ReimbursementPercentage,
@@ -55,6 +67,7 @@ namespace Repository
                 Modified = model.Modified,
                 Deleted = model.Deleted
             };
+            newInsurance.PaymentFrequency = !model.PaymentFrequencyDays.HasValue ? null : new TimeSpan(model.PaymentFrequencyDays.Value, 0, 0, 0);
             using (ISession session = NHibernateSession.OpenSession())
             {
                 Dog foundDog = session.Query<Dog>().FirstOrDefault(u => u.DogId == model.Dog.DogId.Value);
@@ -84,7 +97,7 @@ namespace Repository
                     foundInsurance.DeductibleAmount = model.DeductibleAmount;
                     foundInsurance.EndDateTime = model.EndDateTime;
                     foundInsurance.PaymentAmount = model.PaymentAmount;
-                    foundInsurance.PaymentFrequency = model.PaymentFrequency;
+                    foundInsurance.PaymentFrequency = !model.PaymentFrequencyDays.HasValue ? null : new TimeSpan(model.PaymentFrequencyDays.Value, 0, 0, 0);
                     foundInsurance.Company = model.Company;
                     foundInsurance.PolicyId = model.PolicyId?.Value;
                     foundInsurance.ReimbursementPercentage = model.ReimbursementPercentage;

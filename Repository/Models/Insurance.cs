@@ -14,6 +14,7 @@ namespace Repository.Models
         public virtual TimeSpan? PaymentFrequency { get; set; }
         public virtual decimal? DeductibleAmount { get; set; }
         public virtual decimal? AnnualCoverageLimit { get; set; }
+        public virtual bool UnlimitedAnnualCoverageLimit { get; set; }
         public virtual int? ReimbursementPercentage { get; set; }
         public virtual string Company { get; set; }
         public virtual string Website { get; set; }

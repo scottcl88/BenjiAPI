@@ -29,6 +29,7 @@ namespace Models.Shared
         public TimeSpan? PaymentFrequency { get; set; }
         public decimal? DeductibleAmount { get; set; }
         public decimal? AnnualCoverageLimit { get; set; }
+        public bool UnlimitedAnnualCoverageLimit { get; set; }
         public int? ReimbursementPercentage { get; set; }
         public string Company { get; set; }
         public string Website { get; set; }

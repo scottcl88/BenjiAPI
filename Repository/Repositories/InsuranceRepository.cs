@@ -40,6 +40,7 @@ namespace Repository
             Insurance newInsurance = new Insurance
             {
                 AnnualCoverageLimit = model.AnnualCoverageLimit,
+                UnlimitedAnnualCoverageLimit = model.UnlimitedAnnualCoverageLimit,
                 DeductibleAmount = model.DeductibleAmount,
                 EndDateTime = model.EndDateTime,
                 PaymentAmount = model.PaymentAmount,
@@ -78,6 +79,7 @@ namespace Repository
                     if (foundInsurance == null) return false;
                     foundInsurance.Modified = DateTime.UtcNow;
 
+                    foundInsurance.UnlimitedAnnualCoverageLimit = model.UnlimitedAnnualCoverageLimit;
                     foundInsurance.AnnualCoverageLimit = model.AnnualCoverageLimit;
                     foundInsurance.DeductibleAmount = model.DeductibleAmount;
                     foundInsurance.EndDateTime = model.EndDateTime;

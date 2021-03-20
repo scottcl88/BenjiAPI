@@ -11,6 +11,7 @@ namespace Repository
             {
                 InsuranceId = new InsuranceId() { Value = dbInsurance.InsuranceId },
                 AnnualCoverageLimit = dbInsurance.AnnualCoverageLimit,
+                UnlimitedAnnualCoverageLimit = dbInsurance.UnlimitedAnnualCoverageLimit,
                 DeductibleAmount = dbInsurance.DeductibleAmount,
                 EndDateTime = dbInsurance.EndDateTime,
                 PaymentAmount = dbInsurance.PaymentAmount,

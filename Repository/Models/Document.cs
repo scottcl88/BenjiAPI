@@ -10,6 +10,7 @@ namespace Repository.Models
         public virtual string Description { get; set; }
         public virtual string ContentType { get; set; }
         public virtual int ByteSize { get; set; }
+        public virtual byte[] Bytes { get; set; }
         public virtual Folder Folder { get; set; }
         public virtual Guid DocumentKey { get; set; }
         public virtual DateTime Created { get; set; }

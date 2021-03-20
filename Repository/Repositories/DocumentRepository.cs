@@ -11,11 +11,18 @@ namespace Repository
     {
         public List<DocumentModel> GetAllDocuments()
         {
-            List<DocumentModel> documentModels;
-            using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
+            List<DocumentModel> documentModels = new List<DocumentModel>();
+            try
             {
-                var documents = session.Query<Document>().Where(c => !c.Deleted.HasValue);
-                documentModels = documents.Select(x => x.ToDocumentModel()).ToList();
+                using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
+                {
+                    var documents = session.Query<Document>().Where(c => !c.Deleted.HasValue);
+                    documentModels = documents.Select(x => x.ToDocumentModel()).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
             return documentModels;
         }
@@ -38,6 +45,7 @@ namespace Repository
         {
             Document newDocument = new Document
             {
+                Bytes = model.Bytes,
                 FileName = model.FileName,
                 Created = model.Created,
                 ContentType = model.ContentType,
@@ -63,21 +71,28 @@ namespace Repository
 
         public bool UpdateDocument(DocumentModel documentModel)
         {
-            using (ISession session = NHibernateSession.OpenSession())
+            try
             {
-                Document foundDocument = session.Query<Document>().FirstOrDefault(c => c.DocumentId == documentModel.DocumentId.Value);
-                if (foundDocument == null) return false;
-                foundDocument.FileName = documentModel.FileName;
-                foundDocument.Description = documentModel.Description;
-                foundDocument.Modified = DateTime.UtcNow;
-                Folder foundFolder = session.Query<Folder>().FirstOrDefault(f => f.FolderId == documentModel.Folder.FolderId.Value);
-                if (foundFolder == null) return false;
-                foundDocument.Folder = foundFolder;
-                using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
+                using (ISession session = NHibernateSession.OpenSession())
                 {
-                    session.Update(foundDocument); //  Save the user in session
-                    transaction.Commit();   //  Commit the changes to the database
+                    Document foundDocument = session.Query<Document>().FirstOrDefault(c => c.DocumentId == documentModel.DocumentId.Value);
+                    if (foundDocument == null) return false;
+                    foundDocument.FileName = documentModel.FileName;
+                    foundDocument.Description = documentModel.Description;
+                    foundDocument.Modified = DateTime.UtcNow;
+                    Folder foundFolder = session.Query<Folder>().FirstOrDefault(f => f.FolderId == documentModel.Folder.FolderId.Value);
+                    if (foundFolder == null) return false;
+                    foundDocument.Folder = foundFolder;
+                    using (ITransaction transaction = session.BeginTransaction())   //  Begin a transaction
+                    {
+                        session.Update(foundDocument); //  Save the user in session
+                        transaction.Commit();   //  Commit the changes to the database
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
             return true;
         }

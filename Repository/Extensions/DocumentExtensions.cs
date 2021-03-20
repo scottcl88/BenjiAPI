@@ -12,6 +12,7 @@ namespace Repository
             {
                 DocumentId = new DocumentId() { Value = dbDocument.DocumentId },
                 FileName = dbDocument.FileName,
+                Bytes = dbDocument.Bytes,
                 Description = dbDocument.Description,
                 ContentType = dbDocument.ContentType,
                 ByteSize = dbDocument.ByteSize,

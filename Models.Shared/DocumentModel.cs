@@ -25,6 +25,7 @@ namespace Models.Shared
         public string Description { get; set; }
         public string ContentType { get; set; }
         public int ByteSize { get; set; }
+        public byte[] Bytes { get; set; }
 
         [Required]
         public FolderModel Folder { get; set; }
@@ -39,6 +40,7 @@ namespace Models.Shared
         public DateTime Modified { get; set; }
         public DateTime? Deleted { get; set; }
         public IList<DocumentTagModel> Tags { get; set; }
+        public static readonly long MaxSize = 26214400;//20 MB
     }
 
     public partial class DocumentTagId

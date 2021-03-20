@@ -4,6 +4,11 @@ using System;
 
 namespace Migrations
 {
+    public static class SQLDefaults
+    {
+        public const int DEFAULT_STRING_SIZE = 255;
+        public const int MAX_STRING_SIZE = 5000;
+    }
     internal class Program
     {
         protected Program()
@@ -34,7 +39,7 @@ namespace Migrations
                     // Add SQLite support to FluentMigrator
                     .AddSqlServer2016()
                     // Set the connection string
-                    .WithGlobalConnectionString("Server=localhost\\SQLEXPRESS;Database=elements;Trusted_Connection=True;")
+                    .WithGlobalConnectionString("Server=localhost\\SQLEXPRESS;Database=BenjiDB;Trusted_Connection=True;")
 
                     // Define the assembly containing the migrations
                     .ScanIn(typeof(Program).Assembly).For.Migrations())

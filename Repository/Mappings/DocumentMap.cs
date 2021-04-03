@@ -13,7 +13,7 @@ namespace Repository.Mappings
             Map(x => x.Description).Nullable();
             Map(x => x.ContentType).Not.Nullable();
             Map(x => x.ByteSize).Not.Nullable();
-            Map(x => x.Bytes).Not.Nullable();
+            Map(x => x.Bytes).Length(int.MaxValue).Not.Nullable();
             References(x => x.Folder, "FolderId").Not.Nullable();
             Map(x => x.DocumentKey).Not.Nullable();
             Map(x => x.LastViewed).Not.Nullable();

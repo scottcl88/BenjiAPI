@@ -17,7 +17,7 @@ namespace Repository
                 using (ISession session = NHibernateSession.OpenSession())  // Open a session to conect to the database
                 {
                     var documents = session.Query<Document>().Where(c => !c.Deleted.HasValue);
-                    documentModels = documents.Select(x => x.ToDocumentModel()).ToList();
+                    documentModels = documents.Select(x => x.ToDocumentModel(false)).ToList();
                 }
             }
             catch (Exception ex)
@@ -35,7 +35,7 @@ namespace Repository
                 var document = session.Query<Document>().FirstOrDefault(c => c.DocumentId == documentId.Value);
                 if (document != null)
                 {
-                    documentModel = document.ToDocumentModel();
+                    documentModel = document.ToDocumentModel(true);
                 }
             }
             return documentModel;

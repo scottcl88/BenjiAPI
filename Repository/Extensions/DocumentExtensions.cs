@@ -6,13 +6,12 @@ namespace Repository
 {
     public static class DocumentExtensions
     {
-        public static DocumentModel ToDocumentModel(this Document dbDocument)
+        public static DocumentModel ToDocumentModel(this Document dbDocument, bool includeBytes = false)
         {
-            return new DocumentModel()
+            var model = new DocumentModel()
             {
                 DocumentId = new DocumentId() { Value = dbDocument.DocumentId },
                 FileName = dbDocument.FileName,
-                Bytes = dbDocument.Bytes,
                 Description = dbDocument.Description,
                 ContentType = dbDocument.ContentType,
                 ByteSize = dbDocument.ByteSize,
@@ -24,6 +23,11 @@ namespace Repository
                 Deleted = dbDocument.Deleted,
                 Tags = dbDocument.Tags?.Select(x => x.ToDocumenTagModel())?.ToList()
             };
+            if (includeBytes)
+            {
+                model.Bytes = dbDocument.Bytes;
+            }
+            return model;
         }
 
         public static DocumentTagModel ToDocumenTagModel(this DocumentTag dbDocumentTag)

@@ -10,7 +10,7 @@ namespace Migrations
             Alter.Column("Comments").OnTable("Boarding").AsString(SQLDefaults.MAX_STRING_SIZE).Nullable();
             Alter.Column("Description").OnTable("DocumentTag").AsString(SQLDefaults.MAX_STRING_SIZE).Nullable();
             Alter.Column("Description").OnTable("Folder").AsString(SQLDefaults.MAX_STRING_SIZE).Nullable();
-            Alter.Column("Description").OnTable("Incident").AsString(SQLDefaults.MAX_STRING_SIZE).Nullable(); 
+            Alter.Column("Description").OnTable("Incident").AsString(SQLDefaults.MAX_STRING_SIZE).Nullable();
             Alter.Column("Comments").OnTable("Treatments").AsString(SQLDefaults.MAX_STRING_SIZE).Nullable();
             Alter.Column("Comments").OnTable("Vaccines").AsString(SQLDefaults.MAX_STRING_SIZE).Nullable();
             Alter.Column("Comments").OnTable("VetVisits").AsString(SQLDefaults.MAX_STRING_SIZE).Nullable();

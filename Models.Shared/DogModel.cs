@@ -15,6 +15,7 @@ namespace Models.Shared
         Female = 2,
         Other = 3
     }
+
     public partial class DogModel
     {
         public DogModel()
@@ -44,6 +45,7 @@ namespace Models.Shared
 
         [Required]
         public Gender Gender { get; set; }
+
         public string MicrochipNumber { get; set; }
         public string RabiesTagNumber { get; set; }
         public bool Fixed { get; set; }

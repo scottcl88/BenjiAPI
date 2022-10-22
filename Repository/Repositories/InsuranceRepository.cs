@@ -34,6 +34,7 @@ namespace Repository
             }
             return insuranceModel;
         }
+
         public InsuranceModel GetInsuranceById(InsuranceId InsuranceId)
         {
             InsuranceModel model = new InsuranceModel();
@@ -113,7 +114,6 @@ namespace Repository
             }
             catch (Exception ex)
             {
-
             }
             return true;
         }

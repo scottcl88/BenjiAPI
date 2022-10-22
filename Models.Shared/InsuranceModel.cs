@@ -14,7 +14,7 @@ namespace Models.Shared
     }
 
     public partial class InsuranceModel
-    {        
+    {
         public InsuranceId InsuranceId { get; set; }
 
         public DogModel Dog { get; set; }

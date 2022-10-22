@@ -1,11 +1,8 @@
 ﻿using Business;
-using DataExtensions;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Models.Shared;
 using System;
-using System.Collections.Generic;
 
 namespace BenjiAPI
 {
@@ -22,7 +19,6 @@ namespace BenjiAPI
             _logger = logger;
             _backupManager = backupManager;
         }
-
 
         [HttpGet]
         [Route("GetLastBackup")]

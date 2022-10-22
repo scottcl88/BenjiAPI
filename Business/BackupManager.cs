@@ -1,9 +1,5 @@
-﻿using DataExtensions;
-using Models.Shared;
-using Repository;
+﻿using Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Business
 {
@@ -15,7 +11,6 @@ namespace Business
         {
             _backupRepository = new BackupRepository();
         }
-             
 
         public bool AddBackup()
         {

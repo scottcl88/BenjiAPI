@@ -9,6 +9,7 @@ namespace Migrations
         public const int DEFAULT_STRING_SIZE = 255;
         public const int MAX_STRING_SIZE = 5000;
     }
+
     internal class Program
     {
         protected Program()

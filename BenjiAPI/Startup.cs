@@ -48,19 +48,13 @@ namespace BenjiAPI
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "ToDo API",
-                    Description = "A simple example ASP.NET Core Web API",
-                    TermsOfService = new Uri("https://example.com/terms"),
+                    Title = "Benji API",
+                    Description = "A ASP.NET Core Web API for the BenjiWorldApp",
                     Contact = new OpenApiContact
                     {
-                        Name = "Shayne Boyer",
+                        Name = "Scott Lewis",
                         Email = string.Empty,
-                        Url = new Uri("https://twitter.com/spboyer"),
-                    },
-                    License = new OpenApiLicense
-                    {
-                        Name = "Use under LICX",
-                        Url = new Uri("https://example.com/license"),
+                        Url = new Uri("https://www.scottcl.com"),
                     }
                 });
             });
@@ -96,7 +90,7 @@ namespace BenjiAPI
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Benji API V1");
             });
         }
     }

@@ -1,10 +1,5 @@
-﻿using DataExtensions;
-using Models.Shared;
-using NHibernate;
-using Repository.Models;
+﻿using NHibernate;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Repository
 {
@@ -26,6 +21,7 @@ namespace Repository
                 return false;
             }
         }
+
         public DateTime? GetLastBackup()
         {
             try

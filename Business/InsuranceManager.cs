@@ -24,6 +24,7 @@ namespace Business
         {
             return _insuranceRepository.GetDefaultInsurance();
         }
+
         public InsuranceModel GetInsuranceById(InsuranceId insuranceId)
         {
             return _insuranceRepository.GetInsuranceById(insuranceId);
@@ -38,6 +39,7 @@ namespace Business
         {
             return _insuranceRepository.UpdateInsurance(request.Insurance);
         }
+
         public bool DeleteInsurance(InsuranceDeleteRequest request)
         {
             return _insuranceRepository.DeleteInsurance(request);

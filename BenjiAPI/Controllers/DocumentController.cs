@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MimeTypes;
 using Models.Shared;
 using System;
 using System.Collections.Generic;
@@ -26,7 +25,7 @@ namespace BenjiAPI
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly string[] permittedExtensions = new string[] { ".txt", ".pdf" };
         private readonly long _fileSizeLimit = 26214400;
-                                               
+
         public DocumentController(ILogger<DocumentController> logger, DocumentManager documentManager, FolderManager folderManager, IWebHostEnvironment environment)
         {
             _logger = logger;
